@@ -1,1 +1,1 @@
-# vuepress-plugin-update-info
+# vuepress-plugin-frontmatter-update-info
