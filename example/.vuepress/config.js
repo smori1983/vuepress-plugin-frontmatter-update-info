@@ -5,8 +5,14 @@ module.exports = {
   themeConfig: {
     search: false,
     sidebar: [
-      '/debug.md',
-      '/update_info.md',
+      {
+        collapsable: false,
+        title: 'Main',
+        children: [
+          '/debug.md',
+          '/update_info.md',
+        ],
+      },
       {
         collapsable: false,
         title: 'Pages',
