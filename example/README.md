@@ -1,7 +1,10 @@
 ---
 home: false
 ---
-# Config
+# Example site
+
+
+## Config
 
 `.vuepress/config.js`
 
@@ -12,3 +15,8 @@ module.exports = {
   ],
 };
 ```
+
+
+## Deployed source
+
+`example` directory of [GitHub](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info).

@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'vuepress-plugin-frontmatter-update-info Demo',
+  title: 'vuepress-plugin-frontmatter-update-info',
   dest: 'example/.vuepress/dist',
 
   themeConfig: {
