@@ -2,7 +2,7 @@
 
 The content of `@dynamic/vuepress-plugin-frontmatter-update-info/data.js`
 
-<FrontmatterUpdateInfoDebug/>
+<PluginFrontmatterUpdateInfoDebug/>
 
 -----
-Using `<FrontmatterUpdateInfoDebug/>`.
+Using `<PluginFrontmatterUpdateInfoDebug/>`.

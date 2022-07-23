@@ -1,6 +1,6 @@
 # Update info
 
-<FrontmatterUpdateInfoList/>
+<PluginFrontmatterUpdateInfoList/>
 
 -----
-Using `<FrontmatterUpdateInfoList/>`.
+Using `<PluginFrontmatterUpdateInfoList/>`.
