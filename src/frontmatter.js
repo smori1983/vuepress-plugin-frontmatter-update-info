@@ -15,37 +15,37 @@ const collectUpdateInfo = (pages) => {
 
     const updateInfo = page.frontmatter.update_info;
 
-    const infoList = [];
+    const records = [];
     let dateFirst = '';
     let dateLast = '';
 
-    updateInfo.filter(hasValidDate).forEach((info) => {
-      if (infoList.length === 0) {
-        dateFirst = info.date;
-        dateLast = info.date;
+    updateInfo.filter(hasValidDate).forEach((record) => {
+      if (records.length === 0) {
+        dateFirst = record.date;
+        dateLast = record.date;
       }
 
-      infoList.push({
-        date: info.date,
-        description: prepareDescription(info),
+      records.push({
+        date: record.date,
+        description: prepareDescription(record),
       });
 
-      if (dateFirst > info.date) {
-        dateFirst = info.date;
+      if (dateFirst > record.date) {
+        dateFirst = record.date;
       }
 
-      if (dateLast < info.date) {
-        dateLast = info.date;
+      if (dateLast < record.date) {
+        dateLast = record.date;
       }
     });
 
-    if (infoList.length > 0) {
+    if (records.length > 0) {
       result.push({
         path: page.path,
         title: page.title,
         dateFirst: dateFirst,
         dateLast: dateLast,
-        info: infoList,
+        records: records,
       });
     }
   });
@@ -54,28 +54,28 @@ const collectUpdateInfo = (pages) => {
 };
 
 /**
- * @param {Object} info
+ * @param {Object} record
  * @return {boolean}
  */
-const hasValidDate = (info) => {
-  if (typeof info.date !== 'string') {
+const hasValidDate = (record) => {
+  if (typeof record.date !== 'string') {
     return false;
   }
 
-  return /^\d{4}\/\d{2}\/\d{2}$/.test(info.date);
+  return /^\d{4}\/\d{2}\/\d{2}$/.test(record.date);
 };
 
 /**
- * @param {Object} info
+ * @param {Object} record
  * @return {string[]}
  */
-const prepareDescription = (info) => {
-  if (!Array.isArray(info.description)) {
+const prepareDescription = (record) => {
+  if (!Array.isArray(record.description)) {
     return [];
   }
 
-  if (info.description.every((child) => typeof child === 'string')) {
-    return info.description;
+  if (record.description.every((child) => typeof child === 'string')) {
+    return record.description;
   }
 
   return [];
