@@ -3,10 +3,10 @@
     <div v-for="page in updates">
       <router-link :to="page.path">{{ page.title }}</router-link>
       <ul>
-        <li v-for="info in page.info">
-          <span>{{ info.date }}</span>
-          <ul v-if="info.description.length > 0">
-            <li v-for="line in info.description">{{ line }}</li>
+        <li v-for="record in page.records">
+          <span>{{ record.date }}</span>
+          <ul v-if="record.description.length > 0">
+            <li v-for="line in record.description">{{ line }}</li>
           </ul>
         </li>
       </ul>
