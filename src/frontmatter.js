@@ -13,11 +13,13 @@ const collectUpdateInfo = (pages) => {
       return;
     }
 
+    const updateInfo = page.frontmatter.update_info;
+
     const infoList = [];
     let dateFirst = '';
     let dateLast = '';
 
-    page.frontmatter.update_info.filter(hasValidDate).forEach((info) => {
+    updateInfo.filter(hasValidDate).forEach((info) => {
       if (infoList.length === 0) {
         dateFirst = info.date;
         dateLast = info.date;
