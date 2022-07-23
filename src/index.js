@@ -46,20 +46,26 @@ const collectUpdateInfo = (pages) => {
     }
 
     const infoList = [];
-    let latestDate = null;
+    let dateFirst = null;
+    let dateLast = null;
 
     page.frontmatter.update_info.filter(hasValidDate).forEach((info) => {
+      if (infoList.length === 0) {
+        dateFirst = info.date;
+        dateLast = info.date;
+      }
+
       infoList.push({
         date: info.date,
         description: prepareDescription(info),
       });
 
-      if (latestDate === null) {
-        latestDate = info.date;
+      if (dateFirst > info.date) {
+        dateFirst = info.date;
       }
 
-      if (latestDate < info.date) {
-        latestDate = info.date;
+      if (dateLast < info.date) {
+        dateLast = info.date;
       }
     });
 
@@ -67,7 +73,8 @@ const collectUpdateInfo = (pages) => {
       result.push({
         path: page.path,
         title: page.title,
-        latestDate: latestDate,
+        dateFirst: dateFirst,
+        dateLast: dateLast,
         info: infoList,
       });
     }

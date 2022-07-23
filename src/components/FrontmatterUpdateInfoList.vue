@@ -28,11 +28,11 @@ export default {
     const sorting = data.slice();
 
     sorting.sort((a, b) => {
-      if (a.latestDate === b.latestDate) {
+      if (a.dateLast === b.dateLast) {
         return a.title > b.title ? 1 : -1;
       }
 
-      return a.latestDate > b.latestDate ? -1 : 1;
+      return a.dateLast > b.dateLast ? -1 : 1;
     });
 
     this.updates = sorting;
