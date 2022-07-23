@@ -14,8 +14,8 @@ const collectUpdateInfo = (pages) => {
     }
 
     const infoList = [];
-    let dateFirst = null;
-    let dateLast = null;
+    let dateFirst = '';
+    let dateLast = '';
 
     page.frontmatter.update_info.filter(hasValidDate).forEach((info) => {
       if (infoList.length === 0) {
