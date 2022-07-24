@@ -16,6 +16,8 @@ update_info:
 
 ## Frontmatter
 
+- First item has date with invalid format and ignored.
+
 ```
 ---
 update_info:

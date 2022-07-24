@@ -14,6 +14,8 @@ update_info:
 
 ## Frontmatter
 
+- Invalid structure.
+
 ```
 ---
 update_info:

@@ -16,6 +16,8 @@ update_info:
 
 ## Frontmatter
 
+- Second record has the latest date.
+
 ```
 ---
 update_info:

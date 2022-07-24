@@ -14,6 +14,8 @@ update_info:
 
 ## Frontmatter
 
+- '2022/07/20' is the latest date among all pages.
+
 ```
 ---
 update_info:
