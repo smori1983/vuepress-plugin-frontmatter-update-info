@@ -1,13 +1,13 @@
 ---
 update_info:
-  - date: 20220710
+  - date: 2022/07/12
     description:
-    - Update text for 2022/07/10.
-  - date: 2022/07/11
+    - Update text for 2022/07/12.
+  - date: 2022/07/02
     description:
-    - Update text for 2022/07/11.
+    - Update text for 2022/07/02.
 ---
-# Page 05
+# Page 002
 
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
@@ -19,11 +19,11 @@ update_info:
 ```
 ---
 update_info:
-  - date: 20220710
+  - date: 2022/07/12
     description:
-    - Update text for 2022/07/10.
-  - date: 2022/07/11
+    - Update text for 2022/07/12.
+  - date: 2022/07/02
     description:
-    - Update text for 2022/07/11.
+    - Update text for 2022/07/02.
 ---
 ```

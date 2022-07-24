@@ -18,11 +18,12 @@ module.exports = {
         sidebarDepth: 0,
         title: 'Pages',
         children: [
-          '/pages/page01.md',
-          '/pages/page02.md',
-          '/pages/page03.md',
-          '/pages/page04.md',
-          '/pages/page05.md',
+          '/pages/page001.md',
+          '/pages/page002.md',
+          '/pages/page003.md',
+          '/pages/page004.md',
+          '/pages/page005.md',
+          '/pages/page101.md',
         ],
       }
     ],
