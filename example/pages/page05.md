@@ -14,9 +14,9 @@ update_info:
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 
+## Frontmatter
 
-::: details Source
-````
+```
 ---
 update_info:
   - date: 20220710
@@ -26,10 +26,4 @@ update_info:
     description:
     - Update text for 2022/07/11.
 ---
-# Page 05
-
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
-````
-:::
+```

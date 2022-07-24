@@ -15,6 +15,7 @@ module.exports = {
       },
       {
         collapsable: false,
+        sidebarDepth: 0,
         title: 'Pages',
         children: [
           '/pages/page01.md',
