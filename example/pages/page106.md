@@ -7,16 +7,18 @@ update_info:
     description:
     - Update text for 2022/07/11.
 ---
-# Page 05
+# Page 106
 
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 
+## Frontmatter
 
-::: details Source
-````
+- First item has date with invalid format and ignored.
+
+```
 ---
 update_info:
   - date: 20220710
@@ -26,10 +28,4 @@ update_info:
     description:
     - Update text for 2022/07/11.
 ---
-# Page 05
-
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
-````
-:::
+```
