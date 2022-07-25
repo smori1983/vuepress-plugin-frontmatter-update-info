@@ -1,9 +1,7 @@
 ---
 update_info:
   - date: 2022/07/20
-    description:
-    - Update text of Page 004.
-    - Update text of Page 004.
+    description: Update text of Page 004.
 ---
 # Page 004
 
@@ -14,14 +12,12 @@ update_info:
 
 ## Frontmatter
 
-- '2022/07/20' is the latest date among all pages.
+- Define description as string.
 
 ```
 ---
 update_info:
   - date: 2022/07/20
-    description:
-    - Update text of Page 004.
-    - Update text of Page 004.
+    description: Update text of Page 004.
 ---
 ```

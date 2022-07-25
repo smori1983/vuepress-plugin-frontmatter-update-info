@@ -70,6 +70,10 @@ const hasValidDate = (record) => {
  * @return {string[]}
  */
 const prepareDescription = (record) => {
+  if (typeof record.description === 'string') {
+    return [record.description];
+  }
+
   if (!Array.isArray(record.description)) {
     return [];
   }
