@@ -7,7 +7,7 @@ update_info:
     description:
     - Update text for 2022/07/11.
 ---
-# Page 005
+# Page 106
 
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit

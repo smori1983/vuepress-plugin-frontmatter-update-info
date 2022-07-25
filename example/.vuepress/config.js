@@ -22,8 +22,12 @@ module.exports = {
           '/pages/page002.md',
           '/pages/page003.md',
           '/pages/page004.md',
-          '/pages/page005.md',
           '/pages/page101.md',
+          '/pages/page102.md',
+          '/pages/page103.md',
+          '/pages/page104.md',
+          '/pages/page105.md',
+          '/pages/page106.md',
         ],
       }
     ],

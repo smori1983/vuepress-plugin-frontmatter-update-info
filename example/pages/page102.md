@@ -1,6 +1,7 @@
 ---
+update_info:
 ---
-# Page 101
+# Page 102
 
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
@@ -9,9 +10,10 @@
 
 ## Frontmatter
 
-- `update_info` is not defined.
+- Invalid structure (no concrete records, value will be `null`).
 
 ```
 ---
+update_info:
 ---
 ```
