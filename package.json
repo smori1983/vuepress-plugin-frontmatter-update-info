@@ -10,7 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "vuepress build example"
   },
-  "dependencies": {},
+  "dependencies": {
+    "hash-sum": "^2.0.0"
+  },
   "devDependencies": {
     "http-server": "^14.1.1",
     "vuepress": "^1.9.7",
