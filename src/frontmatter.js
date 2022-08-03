@@ -2,6 +2,8 @@
  * @typedef {import('vuepress-types').Page} Page
  */
 
+const hash = require('hash-sum');
+
 /**
  * @param {Page[]} pages
  */
@@ -41,6 +43,7 @@ const collectUpdateInfo = (pages) => {
 
     if (records.length > 0) {
       result.push({
+        hashRecords: hash(records),
         key: page.key,
         path: page.path,
         title: page.title,
