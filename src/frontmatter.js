@@ -41,6 +41,7 @@ const collectUpdateInfo = (pages) => {
 
     if (records.length > 0) {
       result.push({
+        key: page.key,
         path: page.path,
         title: page.title,
         dateFirst: dateFirst,
