@@ -12,6 +12,11 @@ const frontmatter = require('./frontmatter');
  * @return {PluginOptionAPI}
  */
 module.exports = (options, ctx) => {
+  const {
+    readyCallback = () => {},
+    generatedCallback = () => {},
+  } = options;
+
   const config = {
     newInfoThresholdDays: options.newInfoThresholdDays || null,
   };
@@ -25,6 +30,10 @@ module.exports = (options, ctx) => {
 
     async ready() {
       updates = frontmatter.collectUpdateInfo(ctx.pages);
+
+      if (typeof readyCallback === 'function') {
+        readyCallback(updates);
+      }
     },
 
     clientDynamicModules() {
@@ -38,6 +47,12 @@ module.exports = (options, ctx) => {
           content: `export default ${JSON.stringify(updates, null, 2)}`,
         },
       ];
+    },
+
+    async generated() {
+      if (typeof generatedCallback === 'function') {
+        generatedCallback(updates);
+      }
     },
   };
 };
