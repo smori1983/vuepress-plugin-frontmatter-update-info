@@ -11,7 +11,9 @@ home: false
 ```js
 module.exports = {
   plugins: [
-    ['frontmatter-update-info'],
+    ['frontmatter-update-info', {
+      newInfoThresholdDays: 14,
+    }],
   ],
 };
 ```

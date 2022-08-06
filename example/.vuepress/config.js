@@ -34,7 +34,9 @@ module.exports = {
   },
 
   plugins: [
-    [require('../../src')],
+    [require('../../src'), {
+      newInfoThresholdDays: 14,
+    }],
   ],
 
   markdown: {
