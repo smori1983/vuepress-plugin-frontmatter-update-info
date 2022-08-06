@@ -43,13 +43,13 @@ const collectUpdateInfo = (pages) => {
 
     if (records.length > 0) {
       result.push({
-        hashRecords: hash(records),
         key: page.key,
         path: page.path,
         title: page.title,
         dateFirst: dateFirst,
         dateLast: dateLast,
         records: records,
+        recordsHash: hash(records),
       });
     }
   });
