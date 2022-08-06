@@ -2,6 +2,7 @@
   <div>
     <div v-for="page in updates">
       <router-link :to="page.path">{{ page.title }}</router-link>
+      <new-badge :date="page.dateLast"></new-badge>
       <ul>
         <li v-for="record in page.records">
           <span>{{ record.date }}</span>
@@ -15,9 +16,15 @@
 </template>
 
 <script>
+import NewBadge from './FrontmatterUpdateInfoNewBadge';
+
 import data from '@dynamic/vuepress-plugin-frontmatter-update-info/data';
 
 export default {
+  components: {
+    NewBadge,
+  },
+
   data() {
     return {
       updates: [],
