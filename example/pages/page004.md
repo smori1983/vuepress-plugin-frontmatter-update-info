@@ -1,6 +1,6 @@
 ---
 update_info:
-  - date: 2022/07/20
+  - date: 2022/08/05
     description: Update text of Page 004.
 ---
 # Page 004
@@ -17,7 +17,7 @@ update_info:
 ```
 ---
 update_info:
-  - date: 2022/07/20
+  - date: 2022/08/05
     description: Update text of Page 004.
 ---
 ```

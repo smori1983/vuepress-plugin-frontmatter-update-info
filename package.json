@@ -11,7 +11,8 @@
     "heroku-postbuild": "vuepress build example"
   },
   "dependencies": {
-    "hash-sum": "^2.0.0"
+    "hash-sum": "^2.0.0",
+    "moment": "^2.29.4"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
