@@ -12,6 +12,7 @@ module.exports = {
         children: [
           '/debug.md',
           '/update_info.md',
+          '/generation_data_demo_01.md',
         ],
       },
       {
@@ -36,6 +37,8 @@ module.exports = {
 
   plugins: [
     [require('../../src')],
+
+    [require('./plugins/generation-data-demo-01')],
   ],
 
   markdown: {
