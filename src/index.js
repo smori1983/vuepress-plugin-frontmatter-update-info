@@ -13,6 +13,7 @@ const frontmatter = require('./frontmatter');
  */
 module.exports = (options, ctx) => {
   const {
+    readyCallback = () => {},
     generatedCallback = () => {},
   } = options;
 
@@ -29,6 +30,10 @@ module.exports = (options, ctx) => {
 
     async ready() {
       updates = frontmatter.collectUpdateInfo(ctx.pages);
+
+      if (typeof readyCallback === 'function') {
+        readyCallback(updates);
+      }
     },
 
     clientDynamicModules() {
