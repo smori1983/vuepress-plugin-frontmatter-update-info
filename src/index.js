@@ -12,6 +12,10 @@ const frontmatter = require('./frontmatter');
  * @return {PluginOptionAPI}
  */
 module.exports = (options, ctx) => {
+  const config = {
+    newInfoThresholdDays: options.newInfoThresholdDays || null,
+  };
+
   let updates = [];
 
   return {
@@ -25,6 +29,10 @@ module.exports = (options, ctx) => {
 
     clientDynamicModules() {
       return [
+        {
+          name: 'vuepress-plugin-frontmatter-update-info/config.js',
+          content: `export default ${JSON.stringify(config, null, 2)}`,
+        },
         {
           name: 'vuepress-plugin-frontmatter-update-info/data.js',
           content: `export default ${JSON.stringify(updates, null, 2)}`,
