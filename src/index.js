@@ -12,6 +12,10 @@ const frontmatter = require('./frontmatter');
  * @return {PluginOptionAPI}
  */
 module.exports = (options, ctx) => {
+  const {
+    generatedCallback = () => {},
+  } = options;
+
   const config = {
     newInfoThresholdDays: options.newInfoThresholdDays || null,
   };
@@ -38,6 +42,12 @@ module.exports = (options, ctx) => {
           content: `export default ${JSON.stringify(updates, null, 2)}`,
         },
       ];
+    },
+
+    async generated() {
+      if (typeof generatedCallback === 'function') {
+        generatedCallback(updates);
+      }
     },
   };
 };
