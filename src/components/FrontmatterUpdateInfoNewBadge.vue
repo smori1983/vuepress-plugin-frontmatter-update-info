@@ -5,10 +5,12 @@
 <script>
 import moment from 'moment';
 
-import config from '@dynamic/vuepress-plugin-frontmatter-update-info/config';
-
 export default {
   props: {
+    threshold: {
+      type: Number,
+      default: 7,
+    },
     date: {
       type: String,
       required: true,
@@ -26,17 +28,15 @@ export default {
   },
 
   mounted() {
-    if (typeof config.newInfoThresholdDays === 'number') {
-      const format = 'YYYY/MM/DD';
+    const format = 'YYYY/MM/DD';
 
-      const today = moment().format(format);
+    const today = moment().format(format);
 
-      const newLastDate = moment(this.date, format)
-        .add(config.newInfoThresholdDays, 'd')
-        .format(format);
+    const newLastDate = moment(this.date, format)
+      .add(this.threshold, 'd')
+      .format(format);
 
-      this.show = today < newLastDate;
-    }
+    this.show = today < newLastDate;
   },
 };
 </script>

@@ -2,7 +2,7 @@
   <div>
     <div v-for="page in updates">
       <router-link :to="page.path">{{ page.title }}</router-link>
-      <new-badge :date="page.dateLast"></new-badge>
+      <new-badge :threshold="newThreshold" :date="page.dateLast"></new-badge>
       <ul>
         <li v-for="record in page.records">
           <span>{{ record.date }}</span>
@@ -21,6 +21,13 @@ import NewBadge from './FrontmatterUpdateInfoNewBadge';
 import data from '@dynamic/vuepress-plugin-frontmatter-update-info/data';
 
 export default {
+  props: {
+    newThreshold: {
+      type: Number,
+      default: 7,
+    },
+  },
+
   components: {
     NewBadge,
   },
