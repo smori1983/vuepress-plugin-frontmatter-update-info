@@ -6,6 +6,9 @@
 const path = require('path');
 const frontmatter = require('./frontmatter');
 
+const readyCallbacks = [];
+const generatedCallbacks = [];
+
 /**
  * @param {Object} options
  * @param {Context} ctx
@@ -30,6 +33,10 @@ module.exports = (options, ctx) => {
       if (typeof readyCallback === 'function') {
         readyCallback(updates);
       }
+
+      readyCallbacks.forEach((callback) => {
+        callback(updates);
+      });
     },
 
     clientDynamicModules() {
@@ -45,6 +52,22 @@ module.exports = (options, ctx) => {
       if (typeof generatedCallback === 'function') {
         generatedCallback(updates);
       }
+
+      generatedCallbacks.forEach((callback) => {
+        callback(updates);
+      });
     },
   };
+};
+
+module.exports.registerReadyCallback = (callback) => {
+  if (typeof callback === 'function') {
+    readyCallbacks.push(callback);
+  }
+};
+
+module.exports.registerGeneratedCallback = (callback) => {
+  if (typeof callback === 'function') {
+    generatedCallbacks.push(callback);
+  }
 };
