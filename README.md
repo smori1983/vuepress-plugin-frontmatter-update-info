@@ -66,6 +66,18 @@ Provides update info list.
 <PluginFrontmatterUpdateInfoList/>
 ```
 
+Displays '`NEW`' badge 7 days by default. to change the threshold, use the component like below:
+
+```
+<PluginFrontmatterUpdateInfoList :new-threshold="14"/>
+```
+
+Or, do not display badge:
+
+```
+<PluginFrontmatterUpdateInfoList :new-threshold="0"/>
+```
+
 ### `FrontmatterUpdateInfoDebug.vue`
 
 Outputs generated client module.
