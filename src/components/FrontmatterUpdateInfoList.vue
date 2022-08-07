@@ -18,26 +18,27 @@
 <script>
 import NewBadge from './FrontmatterUpdateInfoNewBadge';
 
-import config from '@dynamic/vuepress-plugin-frontmatter-update-info/config';
 import data from '@dynamic/vuepress-plugin-frontmatter-update-info/data';
 
 export default {
+  props: {
+    newThreshold: {
+      type: Number,
+      default: 7,
+    },
+  },
+
   components: {
     NewBadge,
   },
 
   data() {
     return {
-      newThreshold: 7,
       updates: [],
     };
   },
 
   mounted() {
-    if (typeof config.newInfoThresholdDays === 'number') {
-      this.newThreshold = config.newInfoThresholdDays;
-    }
-
     const sorting = data.slice();
 
     sorting.sort((a, b) => {
