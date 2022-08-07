@@ -1,6 +1,12 @@
 # Update info
 
-<PluginFrontmatterUpdateInfoList/>
+<PluginFrontmatterUpdateInfoList :new-threshold="14"/>
 
------
-Using `<PluginFrontmatterUpdateInfoList/>`.
+
+## Source
+
+```
+# Update info
+
+<PluginFrontmatterUpdateInfoList :new-threshold="14"/>
+```

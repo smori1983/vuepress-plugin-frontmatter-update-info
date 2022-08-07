@@ -7,6 +7,7 @@ module.exports = {
     sidebar: [
       {
         collapsable: false,
+        sidebarDepth: 0,
         title: 'Main',
         children: [
           '/debug.md',
@@ -34,9 +35,7 @@ module.exports = {
   },
 
   plugins: [
-    [require('../../src'), {
-      newInfoThresholdDays: 14,
-    }],
+    [require('../../src')],
   ],
 
   markdown: {
