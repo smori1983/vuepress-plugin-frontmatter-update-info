@@ -5,9 +5,7 @@
 
 const path = require('path');
 const frontmatter = require('./frontmatter');
-
-const readyCallbacks = [];
-const generatedCallbacks = [];
+const hook = require('./hook');
 
 /**
  * @param {Object} options
@@ -34,7 +32,7 @@ module.exports = (options, ctx) => {
         readyCallback(updates);
       }
 
-      readyCallbacks.forEach((callback) => {
+      hook.getReadyCallbacks().forEach((callback) => {
         callback(updates);
       });
     },
@@ -53,21 +51,9 @@ module.exports = (options, ctx) => {
         generatedCallback(updates);
       }
 
-      generatedCallbacks.forEach((callback) => {
+      hook.getGeneratedCallbacks().forEach((callback) => {
         callback(updates);
       });
     },
   };
-};
-
-module.exports.registerReadyCallback = (callback) => {
-  if (typeof callback === 'function') {
-    readyCallbacks.push(callback);
-  }
-};
-
-module.exports.registerGeneratedCallback = (callback) => {
-  if (typeof callback === 'function') {
-    generatedCallbacks.push(callback);
-  }
 };
