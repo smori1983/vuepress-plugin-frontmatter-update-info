@@ -1,6 +1,6 @@
 ---
 update_info:
-  - date: 2022/08/01
+  - date: 2022/08/04
     description:
     - Update information.
     - Update information.
@@ -21,7 +21,7 @@ update_info:
 ```
 ---
 update_info:
-  - date: 2022/08/01
+  - date: 2022/08/04
     description:
     - Update information.
     - Update information.
