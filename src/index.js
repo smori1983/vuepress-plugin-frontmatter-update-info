@@ -18,6 +18,9 @@ module.exports = (options, ctx) => {
     generatedCallback = () => {},
   } = options;
 
+  hook.addReadyCallback(readyCallback);
+  hook.addGeneratedCallback(generatedCallback);
+
   let updates = [];
 
   return {
@@ -27,10 +30,6 @@ module.exports = (options, ctx) => {
 
     async ready() {
       updates = frontmatter.collectUpdateInfo(ctx.pages);
-
-      if (typeof readyCallback === 'function') {
-        readyCallback(updates);
-      }
 
       hook.getReadyCallbacks().forEach((callback) => {
         callback(updates);
@@ -47,10 +46,6 @@ module.exports = (options, ctx) => {
     },
 
     async generated() {
-      if (typeof generatedCallback === 'function') {
-        generatedCallback(updates);
-      }
-
       hook.getGeneratedCallbacks().forEach((callback) => {
         callback(updates);
       });
