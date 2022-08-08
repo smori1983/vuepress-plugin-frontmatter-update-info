@@ -4,6 +4,7 @@
     <ul>
       <li><code>generation-data-demo-01</code> plugin uses <a href="https://www.npmjs.com/package/conf" target="_blank">conf</a> to store 2 generations of update info.</li>
       <li>To demonstrate, this plugin collects update info when <code>ready()</code> executed.</li>
+      <li>See: <a href="https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/tree/master/example/.vuepress/plugins/generation-data-demo-01" target="_blank">Plugin code</a>.</li>
     </ul>
 
     <h3>Page key list of new updates</h3>
