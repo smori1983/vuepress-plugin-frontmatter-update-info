@@ -109,3 +109,6 @@ dist
 
 # IntelliJ
 .idea/
+
+local.json
+example/.vuepress/plugins/generation-data-demo-02/local.json
