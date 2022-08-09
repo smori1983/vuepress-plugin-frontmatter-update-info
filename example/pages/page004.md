@@ -4,7 +4,7 @@ update_info:
     description:
     - Update information.
     - Update information.
-  - date: 2022/08/05
+  - date: 2022/08/08
     description: Update text of Page 004.
 ---
 # Page 004
@@ -25,7 +25,7 @@ update_info:
     description:
     - Update information.
     - Update information.
-  - date: 2022/08/05
+  - date: 2022/08/08
     description: Update text of Page 004.
 ---
 ```
