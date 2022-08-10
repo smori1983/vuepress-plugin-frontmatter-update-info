@@ -1,6 +1,7 @@
 ---
+permalink: /pages/page003.html
 update_info:
-  - date: 2022/08/10
+  - date: 2022/08/08
 ---
 # Page 003
 
@@ -16,6 +17,6 @@ update_info:
 ```
 ---
 update_info:
-  - date: 2022/08/10
+  - date: 2022/08/08
 ---
 ```
