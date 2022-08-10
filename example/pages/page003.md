@@ -1,6 +1,6 @@
 ---
 update_info:
-  - date: 2022/08/09
+  - date: 2022/08/10
 ---
 # Page 003
 
@@ -16,6 +16,6 @@ update_info:
 ```
 ---
 update_info:
-  - date: 2022/08/09
+  - date: 2022/08/10
 ---
 ```
