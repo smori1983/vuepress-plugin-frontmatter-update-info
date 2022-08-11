@@ -13,14 +13,6 @@ const hook = require('./hook');
  * @return {PluginOptionAPI}
  */
 module.exports = (options, ctx) => {
-  const {
-    readyCallback = () => {},
-    generatedCallback = () => {},
-  } = options;
-
-  hook.addReadyCallback(readyCallback);
-  hook.addGeneratedCallback(generatedCallback);
-
   let updates = [];
 
   return {
