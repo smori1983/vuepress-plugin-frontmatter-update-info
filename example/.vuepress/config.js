@@ -11,7 +11,8 @@ module.exports = {
         title: 'Main',
         children: [
           '/debug.md',
-          '/update_info.md',
+          '/update_info_list.md',
+          '/update_info_table.md',
         ],
       },
       {
