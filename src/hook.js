@@ -44,20 +44,6 @@ class HookManager {
       await callback(updates);
     }
   }
-
-  /**
-   * @return {Function[]}
-   */
-  getReadyCallbacks() {
-    return this._readyCallbacks;
-  }
-
-  /**
-   * @return {Function[]}
-   */
-  getGeneratedCallbacks() {
-    return this._generatedCallbacks;
-  }
 }
 
 module.exports = new HookManager();
