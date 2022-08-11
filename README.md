@@ -91,9 +91,7 @@ Outputs generated client module.
 
 You can register callbacks to handle frontmatter update info data.
 
-Mainly this is designed to save multi-generation data and use them for something.
-
-You need to prepare some method to save the data.
+Mainly this is designed to save multi-generation data and use them for something (You need to prepare some method to save the data).
 
 ```js
 const hook = require('vuepress-plugin-frontmatter-update-info/src/hook');
