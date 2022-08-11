@@ -9,7 +9,7 @@ const hook = require('../../../../src/hook');
 
 let data = {};
 
-hook.addReadyCallback((updates) => {
+hook.addReadyCallback(async (updates) => {
   const conf = new Conf({
     projectName: 'vuepress-plugin-frontmatter-update-info-generation-data-demo-01',
   });
