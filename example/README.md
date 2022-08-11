@@ -12,6 +12,10 @@ home: false
 module.exports = {
   plugins: [
     ['frontmatter-update-info'],
+
+    // Local plugins for demo.
+    [require('./plugins/generation-data-demo-01')],
+    [require('./plugins/generation-data-demo-02')],
   ],
 };
 ```
