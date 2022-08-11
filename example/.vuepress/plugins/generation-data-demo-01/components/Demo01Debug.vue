@@ -7,10 +7,10 @@
       <li>See: <a href="https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/tree/master/example/.vuepress/plugins/generation-data-demo-01" target="_blank">Plugin code</a>.</li>
     </ul>
 
-    <h3>Page key list of new updates</h3>
+    <h3>Page path list of new updates</h3>
     <pre class="json">{{ newPaths }}</pre>
 
-    <h3>Page key list of existing updates</h3>
+    <h3>Page path list of existing updates</h3>
     <pre class="json">{{ existingPaths }}</pre>
 
     <h3>List of new update info</h3>

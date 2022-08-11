@@ -12,6 +12,13 @@ module.exports = {
         children: [
           '/debug.md',
           '/update_info.md',
+        ],
+      },
+      {
+        collapsable: false,
+        sidebarDepth: 0,
+        title: 'Demo',
+        children: [
           '/generation_data_demo_01.md',
           '/generation_data_demo_02.md',
         ],

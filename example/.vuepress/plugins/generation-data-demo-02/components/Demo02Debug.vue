@@ -7,10 +7,10 @@
       <li>See: <a href="https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/tree/master/example/.vuepress/plugins/generation-data-demo-02" target="_blank">Plugin code</a>.</li>
     </ul>
 
-    <h3>Page key list of new updates</h3>
+    <h3>Page path list of new updates</h3>
     <pre class="json">{{ newPaths }}</pre>
 
-    <h3>Page key list of existing updates</h3>
+    <h3>Page path list of existing updates</h3>
     <pre class="json">{{ existingPaths }}</pre>
 
     <h3>List of new update info</h3>
@@ -21,7 +21,7 @@
     <pre class="json">{{ targetPages }}</pre>
 
     <h3>Update info of current and previous generations</h3>
-    <p>Data is managed by <code>generation-data-demo-01</code>plugin.</p>
+    <p>Data is managed by <code>generation-data-demo-02</code>plugin.</p>
     <ul>
       <li><code>generation_0</code>: current</li>
       <li><code>generation_1</code>: previous</li>
