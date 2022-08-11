@@ -85,3 +85,36 @@ Outputs generated client module.
 ```
 <PluginFrontmatterUpdateInfoDebug/>
 ```
+
+
+## Lifecycle hook callbacks
+
+You can register callbacks to handle frontmatter update info data.
+
+Mainly this is designed to save multi-generation data and use them for something.
+
+You need to prepare some method to save the data.
+
+```js
+const hook = require('vuepress-plugin-frontmatter-update-info/src/hook');
+
+hook.addReadyCallback(async (updates) => {
+  // ...
+});
+
+hook.addGeneratedCallback(async (updates) => {
+  // ...
+});
+```
+
+### Callbacks for ready hook
+
+Callbacks registered by `addReadyCallback()` will be invoked when `ready()` hook was executed.
+
+This can be used to handle data inside the VuePress site, for example add client dynamic module.
+
+### Callbacks for generated hook
+
+Callbacks registered by `addGeneratedCallback()` will be invoked when `generated()` hook was executed.
+
+This can be used to do something after static site was generated, for example notify with slack.
