@@ -23,9 +23,7 @@ module.exports = (options, ctx) => {
     async ready() {
       updates = frontmatter.collectUpdateInfo(ctx.pages);
 
-      for (const callback of hook.getReadyCallbacks()) {
-        await callback(updates);
-      }
+      await hook.invokeReadyCallbacks(updates);
     },
 
     clientDynamicModules() {
@@ -38,9 +36,7 @@ module.exports = (options, ctx) => {
     },
 
     async generated() {
-      for (const callback of hook.getGeneratedCallbacks()) {
-        await callback(updates);
-      }
+      await hook.invokeGeneratedCallbacks(updates);
     },
   };
 };
