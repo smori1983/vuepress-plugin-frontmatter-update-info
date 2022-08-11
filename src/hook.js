@@ -26,6 +26,26 @@ class HookManager {
   }
 
   /**
+   * @param {Object[]} updates
+   * @return {Promise<void>}
+   */
+  async invokeReadyCallbacks(updates) {
+    for (const callback of this._readyCallbacks) {
+      await callback(updates);
+    }
+  }
+
+  /**
+   * @param {Object[]} updates
+   * @return {Promise<void>}
+   */
+  async invokeGeneratedCallbacks(updates) {
+    for (const callback of this._generatedCallbacks) {
+      await callback(updates);
+    }
+  }
+
+  /**
    * @return {Function[]}
    */
   getReadyCallbacks() {
