@@ -8,10 +8,10 @@
     </ul>
 
     <h3>Page key list of new updates</h3>
-    <pre class="json">{{ newKeys }}</pre>
+    <pre class="json">{{ newPaths }}</pre>
 
     <h3>Page key list of existing updates</h3>
-    <pre class="json">{{ existingKeys }}</pre>
+    <pre class="json">{{ existingPaths }}</pre>
 
     <h3>List of new update info</h3>
     <ul>
@@ -37,28 +37,28 @@ export default {
   data () {
     return {
       data: data,
-      newKeys: [],
-      existingKeys: [],
+      newPaths: [],
+      existingPaths: [],
       targetPages: [],
     };
   },
 
   mounted() {
-    const generation0Keys = data.generation_0.map(page => page.key);
-    const generation1Keys = data.generation_1.map(page => page.key);
+    const generation0Paths = data.generation_0.map(page => page.path);
+    const generation1Paths = data.generation_1.map(page => page.path);
 
     const targetPages = [];
 
-    this.newKeys = generation0Keys.filter((key) => !generation1Keys.includes(key));
-    this.existingKeys = generation0Keys.filter((key) => generation1Keys.includes(key));
+    this.newPaths = generation0Paths.filter((path) => !generation1Paths.includes(path));
+    this.existingPaths = generation0Paths.filter((path) => generation1Paths.includes(path));
 
-    this.newKeys.forEach((key) => {
-      targetPages.push(this.findPageByKey(data.generation_0, key));
+    this.newPaths.forEach((path) => {
+      targetPages.push(this.findPageByKey(data.generation_0, path));
     })
 
-    this.existingKeys.forEach((key) => {
-      const generation0Page = this.findPageByKey(data.generation_0, key);
-      const generation1Page = this.findPageByKey(data.generation_1, key);
+    this.existingPaths.forEach((path) => {
+      const generation0Page = this.findPageByPath(data.generation_0, path);
+      const generation1Page = this.findPageByPath(data.generation_1, path);
 
       if (generation0Page.recordsHash !== generation1Page.recordsHash) {
         targetPages.push(generation0Page);
@@ -70,11 +70,12 @@ export default {
 
   methods: {
     /**
-     * @param {Object[]} pages
-     * @param {string} key
+     * @param pages
+     * @param path
+     * @return {Object}
      */
-    findPageByKey(pages, key) {
-      return pages.find(page => page.key === key);
+    findPageByPath(pages, path) {
+      return pages.find(page => page.path === path);
     },
   },
 };
