@@ -6,6 +6,7 @@ const hash = require('hash-sum');
 
 /**
  * @param {Page[]} pages
+ * @return {Object[]}
  */
 const collectUpdateInfo = (pages) => {
   const result = [];
