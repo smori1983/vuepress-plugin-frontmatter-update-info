@@ -2,7 +2,7 @@
 permalink: /pages/page003.html
 update_info:
   - date: 2022/08/05
-  - date: 2022/08/07
+  - date: 2022/08/10
 ---
 # Page 003
 
@@ -19,6 +19,6 @@ update_info:
 ---
 update_info:
   - date: 2022/08/05
-  - date: 2022/08/07
+  - date: 2022/08/10
 ---
 ```
