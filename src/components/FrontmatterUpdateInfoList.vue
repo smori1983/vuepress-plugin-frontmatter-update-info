@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import dataMixin from './mixin/data';
 import NewBadge from './FrontmatterUpdateInfoNewBadge';
 
 import data from '@dynamic/vuepress-plugin-frontmatter-update-info/data';
@@ -32,6 +33,10 @@ export default {
     },
   },
 
+  mixins: [
+    dataMixin,
+  ],
+
   components: {
     NewBadge,
   },
@@ -43,17 +48,7 @@ export default {
   },
 
   mounted() {
-    const sorting = data.slice();
-
-    sorting.sort((a, b) => {
-      if (a.dateLast === b.dateLast) {
-        return a.title > b.title ? 1 : -1;
-      }
-
-      return a.dateLast > b.dateLast ? -1 : 1;
-    });
-
-    this.updates = sorting;
+    this.updates = this.getSorted(data);
   },
 };
 </script>
