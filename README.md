@@ -60,22 +60,42 @@ This plugin collects frontmatter data and generates client module named:
 
 ### `FrontmatterUpdateInfoList.vue`
 
-Provides update info list.
+Displays update info as list.
 
 ```
 <PluginFrontmatterUpdateInfoList/>
 ```
 
-Displays '`NEW`' badge 7 days by default. to change the threshold, use the component like below:
+Displays '`NEW`' badge 7 days by default. To change the threshold, use the component like below:
 
 ```
 <PluginFrontmatterUpdateInfoList :new-threshold="14"/>
 ```
 
-Or, do not display badge:
+Or, if you do not want to display badge:
 
 ```
 <PluginFrontmatterUpdateInfoList :new-threshold="0"/>
+```
+
+### `FrontmatterUpdateInfoTable.vue`
+
+Displays update info as table.
+
+```
+<PluginFrontmatterUpdateInfoTable/>
+```
+
+Displays '`NEW`' badge 7 days by default. To change the threshold, use the component like below:
+
+```
+<PluginFrontmatterUpdateInfoTable :new-threshold="14"/>
+```
+
+Or, if you do not want to display badge:
+
+```
+<PluginFrontmatterUpdateInfoTable :new-threshold="0"/>
 ```
 
 ### `FrontmatterUpdateInfoDebug.vue`
