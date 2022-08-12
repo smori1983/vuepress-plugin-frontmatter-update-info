@@ -11,6 +11,7 @@
     "heroku-postbuild": "vuepress build example"
   },
   "dependencies": {
+    "deep-copy": "^1.4.2",
     "hash-sum": "^2.0.0",
     "moment": "^2.29.4"
   },

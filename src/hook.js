@@ -1,3 +1,5 @@
+const deepCopy = require('deep-copy');
+
 class HookManager {
   constructor() {
     /**
@@ -31,7 +33,7 @@ class HookManager {
    */
   async invokeReadyCallbacks(updates) {
     for (const callback of this._readyCallbacks) {
-      await callback(updates);
+      await callback(deepCopy(updates));
     }
   }
 
@@ -41,7 +43,7 @@ class HookManager {
    */
   async invokeGeneratedCallbacks(updates) {
     for (const callback of this._generatedCallbacks) {
-      await callback(updates);
+      await callback(deepCopy(updates));
     }
   }
 }
