@@ -21,7 +21,7 @@ module.exports = (options, ctx) => {
     ],
 
     extendMarkdown: (md) => {
-      md.use(require('./markdown-it-plugins'));
+      md.use(require('./markdown-it-plugin'));
     },
 
     async ready() {
