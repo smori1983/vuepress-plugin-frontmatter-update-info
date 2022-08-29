@@ -20,6 +20,10 @@ module.exports = (options, ctx) => {
       path.resolve(__dirname, 'enhanceAppFile.js'),
     ],
 
+    extendMarkdown: (md) => {
+      md.use(require('./markdown-it-plugins'));
+    },
+
     async ready() {
       updates = frontmatter.collectUpdateInfo(ctx.pages);
 
