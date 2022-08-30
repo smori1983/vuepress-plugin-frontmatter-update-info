@@ -14,9 +14,15 @@
 </template>
 
 <script>
+import dataMixin from './mixin/data';
+
 import data from '@dynamic/vuepress-plugin-frontmatter-update-info/data';
 
 export default {
+  mixins: [
+    dataMixin,
+  ],
+
   data() {
     return {
       pageData: null,
@@ -24,19 +30,7 @@ export default {
   },
 
   mounted() {
-    this.pageData = this.getData();
-  },
-
-  methods: {
-    getData() {
-      for (let i = 0, len = data.length; i < len; i++) {
-        if (data[i].key === this.$page.key) {
-          return data[i];
-        }
-      }
-
-      return null;
-    }
+    this.pageData = this.findByKey(data, this.$page.key);
   },
 }
 </script>
