@@ -3,9 +3,9 @@ update_info: foo
 ---
 # Page 103
 
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
+Lorem ipsum dolor sit amet, consectetur adipiscing elit
+Lorem ipsum dolor sit amet, consectetur adipiscing elit
+Lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 
 ## Frontmatter

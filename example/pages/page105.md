@@ -6,9 +6,9 @@ update_info:
 ---
 # Page 105
 
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
+Lorem ipsum dolor sit amet, consectetur adipiscing elit
+Lorem ipsum dolor sit amet, consectetur adipiscing elit
+Lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 
 ## Frontmatter
