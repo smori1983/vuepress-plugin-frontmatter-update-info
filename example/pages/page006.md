@@ -1,16 +1,13 @@
 ---
 update_info:
-  - date: 2022/07/01
+  - date: 2022/09/01
     description:
-    - Update text for 2022/07/01.
-  - date: 2022/07/11
+    - Update information.
+  - date: 2022/08/31
     description:
-    - Update text for 2022/07/11.
+    - Update information.
 ---
-# Page 001
-
-
-[[toc]]
+### Page 006 (h3)
 
 
 ## Page contents
@@ -22,16 +19,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 ## Frontmatter
 
-- Second record has the latest date.
-
 ```
 ---
 update_info:
-  - date: 2022/07/01
+  - date: 2022/09/01
     description:
-    - Update text for 2022/07/01.
-  - date: 2022/07/11
+    - Update information.
+  - date: 2022/08/31
     description:
-    - Update text for 2022/07/11.
+    - Update information.
 ---
 ```

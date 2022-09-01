@@ -13,12 +13,22 @@ const hook = require('./hook');
  * @return {PluginOptionAPI}
  */
 module.exports = (options, ctx) => {
+  const {
+    pageEmbed = false,
+  } = options;
+
   let updates = [];
 
   return {
     enhanceAppFiles: [
       path.resolve(__dirname, 'enhanceAppFile.js'),
     ],
+
+    extendMarkdown: (md) => {
+      if (pageEmbed) {
+        md.use(require('./markdown-it-plugin'));
+      }
+    },
 
     async ready() {
       updates = frontmatter.collectUpdateInfo(ctx.pages);

@@ -33,6 +33,8 @@ module.exports = {
           '/pages/page002.md',
           '/pages/page003.md',
           '/pages/page004.md',
+          '/pages/page005.md',
+          '/pages/page006.md',
           '/pages/page101.md',
           '/pages/page102.md',
           '/pages/page103.md',
@@ -45,10 +47,12 @@ module.exports = {
   },
 
   plugins: [
-    [require('../../src')],
-
     [require('./plugins/generation-data-demo-01')],
     [require('./plugins/generation-data-demo-02')],
+
+    [require('../../src'), {
+      pageEmbed: true,
+    }],
   ],
 
   markdown: {

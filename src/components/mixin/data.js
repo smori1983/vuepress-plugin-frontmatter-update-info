@@ -17,5 +17,20 @@ export default {
 
       return dataForSort;
     },
+
+    /**
+     * @param {Object[]} data
+     * @param {string} key
+     * @return {Object|null}
+     */
+    findByKey(data, key) {
+      for (let i = 0, len = data.length; i < len; i++) {
+        if (data[i].key === key) {
+          return data[i];
+        }
+      }
+
+      return null;
+    }
   },
 };

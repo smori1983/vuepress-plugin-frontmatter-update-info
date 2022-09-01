@@ -11,11 +11,15 @@ home: false
 ```js
 module.exports = {
   plugins: [
-    ['frontmatter-update-info'],
-
     // Local plugins for demo.
+    // It is defined to use vuepress-plugin-frontmatter-update-info plugin in them.
     [require('./plugins/generation-data-demo-01')],
     [require('./plugins/generation-data-demo-02')],
+
+    // Define later to get this option applied.
+    ['frontmatter-update-info', {
+      pageEmbed: true,
+    }],
   ],
 };
 ```
