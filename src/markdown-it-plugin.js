@@ -8,7 +8,9 @@ module.exports = (md) => {
     const token2 = state.tokens[1];
     const token3 = state.tokens[2];
 
-    if (!(token1.type === 'heading_open' && token1.tag === 'h1')) {
+    const targetHeadingLevels = ['h1', 'h2'];
+
+    if (!(token1.type === 'heading_open' && targetHeadingLevels.includes(token1.tag))) {
       return;
     }
 
@@ -16,7 +18,7 @@ module.exports = (md) => {
       return;
     }
 
-    if (!(token3.type === 'heading_close' && token3.tag === 'h1')) {
+    if (!(token3.type === 'heading_close' && targetHeadingLevels.includes(token3.tag))) {
       return;
     }
 
