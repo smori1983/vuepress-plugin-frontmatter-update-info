@@ -13,6 +13,10 @@ const hook = require('./hook');
  * @return {PluginOptionAPI}
  */
 module.exports = (options, ctx) => {
+  const {
+    pageEmbed = false,
+  } = options;
+
   let updates = [];
 
   return {
@@ -21,7 +25,9 @@ module.exports = (options, ctx) => {
     ],
 
     extendMarkdown: (md) => {
-      md.use(require('./markdown-it-plugin'));
+      if (pageEmbed) {
+        md.use(require('./markdown-it-plugin'));
+      }
     },
 
     async ready() {
