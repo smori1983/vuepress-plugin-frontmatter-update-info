@@ -45,10 +45,12 @@ module.exports = {
   },
 
   plugins: [
-    [require('../../src')],
-
     [require('./plugins/generation-data-demo-01')],
     [require('./plugins/generation-data-demo-02')],
+
+    [require('../../src'), {
+      pageEmbed: true,
+    }],
   ],
 
   markdown: {
