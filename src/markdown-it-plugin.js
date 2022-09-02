@@ -1,5 +1,11 @@
+const marker = '[[update_info]]';
+
 module.exports = (md) => {
   md.core.ruler.push('vuepress_plugin_frontmatter_update_info', (state) => {
+    if (state.src.includes(marker)) {
+      return;
+    }
+
     if (state.tokens.length < 3) {
       return;
     }
