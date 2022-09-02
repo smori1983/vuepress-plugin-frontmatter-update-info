@@ -47,8 +47,8 @@ export default {
     .record {
       display flex
       margin-bottom -1px
-      border-top 1px solid lightgray
-      border-bottom 1px solid lightgray
+      border-top 1px solid $borderColor
+      border-bottom 1px solid $borderColor
 
       .date {
         width 20%
