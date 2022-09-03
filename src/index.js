@@ -15,6 +15,7 @@ const hook = require('./hook');
 module.exports = (options, ctx) => {
   const {
     pageEmbed = false,
+    pageEmbedMarker = '[[update_info]]',
   } = options;
 
   let updates = [];
@@ -26,8 +27,7 @@ module.exports = (options, ctx) => {
 
     extendMarkdown: (md) => {
       if (pageEmbed) {
-        const marker = '[[update_info]]';
-        md.use(require('./markdown-it-plugin')(marker));
+        md.use(require('./markdown-it-plugin')(pageEmbedMarker));
       }
     },
 
