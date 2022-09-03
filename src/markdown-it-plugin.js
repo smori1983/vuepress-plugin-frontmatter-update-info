@@ -1,4 +1,23 @@
-const pageEmbedMarker = '[[update_info]]';
+/**
+ * @param {string} marker
+ */
+module.exports = (marker) => {
+  return (md) => {
+    if (!(typeof marker === 'string' && marker.trim().length > 0)) {
+      return;
+    }
+
+    pageEmbedMarker = marker;
+
+    md.core.ruler.push('vuepress_plugin_frontmatter_update_info', coreRule);
+    md.block.ruler.before('paragraph', 'vuepress_plugin_frontmatter_update_info_tag', blockRule);
+  };
+};
+
+/**
+ * @type {string}
+ */
+let pageEmbedMarker = '';
 
 const coreRule = (state) => {
   if (state.src.includes(pageEmbedMarker)) {
@@ -51,9 +70,4 @@ const blockRule = (state, startLine, endLine, silent) => {
   state.tokens.push(token);
 
   return true;
-};
-
-module.exports = (md) => {
-  md.core.ruler.push('vuepress_plugin_frontmatter_update_info', coreRule);
-  md.block.ruler.before('paragraph', 'vuepress_plugin_frontmatter_update_info_tag', blockRule);
 };

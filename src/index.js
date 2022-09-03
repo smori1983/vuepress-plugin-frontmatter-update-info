@@ -26,7 +26,8 @@ module.exports = (options, ctx) => {
 
     extendMarkdown: (md) => {
       if (pageEmbed) {
-        md.use(require('./markdown-it-plugin'));
+        const marker = '[[update_info]]';
+        md.use(require('./markdown-it-plugin')(marker));
       }
     },
 
