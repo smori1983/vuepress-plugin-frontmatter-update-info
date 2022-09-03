@@ -1,7 +1,7 @@
-const marker = '[[update_info]]';
+const pageEmbedMarker = '[[update_info]]';
 
 const coreRule = (state) => {
-  if (state.src.includes(marker)) {
+  if (state.src.includes(pageEmbedMarker)) {
     return;
   }
 
@@ -37,7 +37,7 @@ const coreRule = (state) => {
 const blockRule = (state, startLine, endLine, silent) => {
   const lineText = state.src.slice(state.bMarks[startLine], state.eMarks[startLine]);
 
-  if (lineText !== marker) {
+  if (lineText !== pageEmbedMarker) {
     return false;
   }
 
