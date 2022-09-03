@@ -37,7 +37,7 @@ export default {
 
 <style lang="stylus" scoped>
 .frontmatter-update-info-page {
-  margin-bottom 2rem
+  margin 1rem 0 2rem
 
   .link {
     margin-bottom 0.5rem
