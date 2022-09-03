@@ -35,6 +35,8 @@ module.exports = {
           '/pages/page004.md',
           '/pages/page005.md',
           '/pages/page006.md',
+          '/pages/page007a.md',
+          '/pages/page007b.md',
           '/pages/page101.md',
           '/pages/page102.md',
           '/pages/page103.md',

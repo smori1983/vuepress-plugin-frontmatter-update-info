@@ -1,5 +1,11 @@
+const marker = '[[update_info]]';
+
 module.exports = (md) => {
   md.core.ruler.push('vuepress_plugin_frontmatter_update_info', (state) => {
+    if (state.src.includes(marker)) {
+      return;
+    }
+
     if (state.tokens.length < 3) {
       return;
     }
@@ -27,5 +33,24 @@ module.exports = (md) => {
     token.block = true;
 
     state.tokens.splice(3, 0, token);
+  });
+
+  md.block.ruler.before('paragraph', 'vuepress_plugin_frontmatter_update_info_tag', (state, startLine, endLine, silent) => {
+    const lineText = state.src.slice(state.bMarks[startLine], state.eMarks[startLine]);
+
+    if (lineText !== marker) {
+      return false;
+    }
+
+    state.line = startLine + 1;
+
+    const token = new state.Token('html_block', '', 0);
+    token.map = [startLine, state.line];
+    token.content = '<PluginFrontmatterUpdateInfoPageEmbed/>';
+    token.block = true;
+
+    state.tokens.push(token);
+
+    return true;
   });
 };
