@@ -1,12 +1,14 @@
 <template>
-  <div v-if="pageData" class="frontmatter-update-info-page">
-    <div class="records">
-      <div v-for="record in pageData.records" class="record">
-        <div class="date">{{ record.date }}</div>
-        <div class="description">
-          <ul v-if="record.description.length > 0">
-            <li v-for="line in record.description">{{ line }}</li>
-          </ul>
+  <div v-if="pageData" class="frontmatter-update-info">
+    <div class="frontmatter-update-info-page">
+      <div class="records">
+        <div v-for="record in pageData.records" class="record">
+          <div class="date">{{ record.date }}</div>
+          <div class="description">
+            <ul v-if="record.description.length > 0">
+              <li v-for="line in record.description">{{ line }}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -36,33 +38,37 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.frontmatter-update-info-page {
-  margin 1rem 0 2rem
+.frontmatter-update-info {
+  margin 2rem 0
 
-  .link {
-    margin-bottom 0.5rem
-  }
+  .frontmatter-update-info-page {
+    margin-bottom 2rem
 
-  .records {
-    .record {
-      display flex
-      margin-bottom -1px
-      border-top 1px solid $borderColor
-      border-bottom 1px solid $borderColor
+    .link {
+      margin-bottom 0.5rem
+    }
 
-      .date {
-        width 20%
-        line-height 2rem
-      }
+    .records {
+      .record {
+        display flex
+        margin-bottom -1px
+        border-top 1px solid $borderColor
+        border-bottom 1px solid $borderColor
 
-      .description {
-        width 80%
+        .date {
+          width 20%
+          line-height 2rem
+        }
 
-        ul {
-          margin 0
+        .description {
+          width 80%
 
-          li {
-            line-height 2rem
+          ul {
+            margin 0
+
+            li {
+              line-height 2rem
+            }
           }
         }
       }
