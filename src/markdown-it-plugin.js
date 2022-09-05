@@ -1,13 +1,19 @@
 /**
  * @param {string} marker
+ * @param {string} component
  */
-module.exports = (marker) => {
+module.exports = (marker, component) => {
   return (md) => {
     if (!(typeof marker === 'string' && marker.trim().length > 0)) {
       return;
     }
 
+    if (!(typeof component === 'string' && component.trim().length > 0)) {
+      return;
+    }
+
     pageEmbedMarker = marker;
+    pageEmbedComponent = component;
 
     md.core.ruler.push('vuepress_plugin_frontmatter_update_info', coreRule);
     md.block.ruler.before('paragraph', 'vuepress_plugin_frontmatter_update_info_tag', blockRule);
@@ -18,6 +24,11 @@ module.exports = (marker) => {
  * @type {string}
  */
 let pageEmbedMarker = '';
+
+/**
+ * @type {string}
+ */
+let pageEmbedComponent = '';
 
 const coreRule = (state) => {
   if (state.src.includes(pageEmbedMarker)) {
@@ -47,7 +58,7 @@ const coreRule = (state) => {
   }
 
   const token = new state.Token('html_block', '', 0);
-  token.content = '<PluginFrontmatterUpdateInfoPageEmbed/>';
+  token.content = `<${pageEmbedComponent}/>`;
   token.block = true;
 
   state.tokens.splice(3, 0, token);
@@ -64,7 +75,7 @@ const blockRule = (state, startLine, endLine, silent) => {
 
   const token = new state.Token('html_block', '', 0);
   token.map = [startLine, state.line];
-  token.content = '<PluginFrontmatterUpdateInfoPageEmbed/>';
+  token.content = `<${pageEmbedComponent}/>`;
   token.block = true;
 
   state.tokens.push(token);

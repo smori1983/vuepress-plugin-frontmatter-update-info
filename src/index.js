@@ -16,6 +16,7 @@ module.exports = (options, ctx) => {
   const {
     pageEmbed = false,
     pageEmbedMarker = '[[update_info]]',
+    pageEmbedComponent = 'PluginFrontmatterUpdateInfoPageEmbed',
   } = options;
 
   let updates = [];
@@ -27,7 +28,7 @@ module.exports = (options, ctx) => {
 
     extendMarkdown: (md) => {
       if (pageEmbed) {
-        md.use(require('./markdown-it-plugin')(pageEmbedMarker));
+        md.use(require('./markdown-it-plugin')(pageEmbedMarker, pageEmbedComponent));
       }
     },
 
