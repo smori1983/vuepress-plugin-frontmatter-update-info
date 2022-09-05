@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="frontmatter-update-info">
     <div v-for="page in updates" class="frontmatter-update-info-page">
       <div class="link">
         <router-link :to="page.path">{{ page.title }}</router-link>
@@ -54,27 +54,31 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.frontmatter-update-info-page {
-  margin-bottom 1.0rem
+.frontmatter-update-info {
+  margin 2rem 0
 
-  .link {
-    margin-bottom 0.5rem
-  }
+  .frontmatter-update-info-page {
+    margin-bottom 1rem
 
-  .records {
-    margin 0
+    .link {
+      margin-bottom 0.5rem
+    }
 
-    .record {
-      .date {
-        line-height 1.5rem
-      }
+    .records {
+      margin 0
 
-      .description {
-        ul {
-          margin 0
+      .record {
+        .date {
+          line-height 1.5rem
+        }
 
-          li {
-            line-height 1.5rem
+        .description {
+          ul {
+            margin 0
+
+            li {
+              line-height 1.5rem
+            }
           }
         }
       }
