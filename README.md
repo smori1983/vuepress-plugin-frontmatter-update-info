@@ -9,14 +9,26 @@ Visit [online demo](https://vp-frontmatter-update-info.herokuapp.com/).
 
 First, write description as frontmatter about how the page was updated.
 
-Then the plugin will create the client module, which is JSON collecting frontmatter data.
+Then the plugin will create the client dynamic module, which is JSON collecting frontmatter data.
+
+Basically update info is shown as list, and you can enable option to show it in each page.
 
 Default component is provided, and it is also possible to implement your own component by using the client module.
 
 
+## Configuration options
+
+| name                 | description                                         | default value                            |
+|----------------------|-----------------------------------------------------|------------------------------------------|
+| `frontmatterKey`     | Key to define update info data.                     | `'update_info'`                          |
+| `pageEmbed`          | Switch to enable embed of update info to each page. | `false`                                  |
+| `pageEmbedMarker`    | Marker for manual page embed.                       | `'[[update_info]]'`                      |
+| `pageEmbedComponent` | Component name used for page embed.                 | `'PluginFrontmatterUpdateInfoPageEmbed'` |
+
+
 ## Data structure of frontmatter
 
-- `update_info` has array of records.
+- `update_info` (is default value of `frontmatterKey`) has list of records.
 - Each record has `date` (required) and `description` (optional).
   - Format of `date` is `YYYY/MM/DD`.
   - `description` has `string` or array of `string`.
@@ -47,13 +59,18 @@ update_info:
 ```
 
 
-## clientDynamicModules
+## Page embed
 
-This plugin collects frontmatter data and generates client module named:
+If `pageEmbed` option is enabled, component for showing update info is automatically injected to pages.
 
-```
-@dynamic/vuepress-plugin-frontmatter-update-info/data.js
-```
+`markdown-it` plugin is implemented for this feature.
+
+The component is injected after first heading when:
+
+- First line of the page is `<h1>` (`#`) or `<h2>` (`##`).
+- The text for marker (by default `'[[update_info]]'`) is not included in the page.
+
+In other words, you can show update info in any place of the page by manually writing page embed marker.
 
 
 ## Default components
@@ -104,6 +121,15 @@ Outputs generated client module.
 
 ```
 <PluginFrontmatterUpdateInfoDebug/>
+```
+
+
+## clientDynamicModules
+
+This plugin collects frontmatter data and generates client module named:
+
+```
+@dynamic/vuepress-plugin-frontmatter-update-info/data.js
 ```
 
 
