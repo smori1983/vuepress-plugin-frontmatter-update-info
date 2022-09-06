@@ -4,6 +4,9 @@ module.exports = {
 
   themeConfig: {
     search: false,
+    nav: [
+      { text: 'npm', link: 'https://www.npmjs.com/package/vuepress-plugin-frontmatter-update-info' },
+    ],
     sidebar: [
       {
         title: 'Main',
