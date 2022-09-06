@@ -8,8 +8,13 @@ const hash = require('hash-sum');
  * @param {Page[]} pages
  * @param {string} frontmatterKey
  * @return {Object[]}
+ * @throws {Error}
  */
 const collectUpdateInfo = (pages, frontmatterKey) => {
+  if (!(typeof frontmatterKey === 'string' && frontmatterKey.trim().length > 0)) {
+    throw new Error('Invalid frontmatter key');
+  }
+
   const result = [];
 
   pages.forEach((page) => {
