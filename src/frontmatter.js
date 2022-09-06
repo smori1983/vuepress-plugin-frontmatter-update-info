@@ -6,17 +6,23 @@ const hash = require('hash-sum');
 
 /**
  * @param {Page[]} pages
+ * @param {string} frontmatterKey
  * @return {Object[]}
+ * @throws {Error}
  */
-const collectUpdateInfo = (pages) => {
+const collectUpdateInfo = (pages, frontmatterKey) => {
+  if (!(typeof frontmatterKey === 'string' && frontmatterKey.trim().length > 0)) {
+    throw new Error('Invalid frontmatter key');
+  }
+
   const result = [];
 
   pages.forEach((page) => {
-    if (!Array.isArray(page.frontmatter.update_info)) {
+    if (!Array.isArray(page.frontmatter[frontmatterKey])) {
       return;
     }
 
-    const updateInfo = page.frontmatter.update_info;
+    const updateInfo = page.frontmatter[frontmatterKey];
 
     const records = [];
     let dateFirst = '';
