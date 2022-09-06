@@ -7,12 +7,12 @@ update_info:
   description:
     - Update information.
 ---
-# Page 007 (A)
+# Custom tag 01
 
 
-:::tip Case
-`[[update_info]]` is used.
-:::
+## Case
+
+- `[[update_info]]` is used in the page.
 
 
 ## Update info

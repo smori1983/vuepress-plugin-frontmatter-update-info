@@ -7,14 +7,12 @@ update_info:
     description:
     - Update information.
 ---
-### Page 006 (h3)
+### Invalid 07
 
 
-## Page contents
+## Reason
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+- First heading is `<h3>` (`###`) and page embed component is not injected.
 
 
 ## Frontmatter

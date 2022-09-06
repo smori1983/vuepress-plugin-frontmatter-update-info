@@ -1,3 +1,3 @@
-# Generation data demo 02
+# Demo 02 (redis)
 
 <GenerationDataDemo02Debug/>

@@ -1,4 +1,4 @@
-# Generation data demo 01
+# Demo 01 (file system)
 
 ::: warning Note
 This page does not work well on online demo (heroku) because `conf` needs local file system.

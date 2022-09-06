@@ -7,22 +7,19 @@ update_info:
     description:
     - Update text for 2022/07/11.
 ---
-# Page 001
+# Basic 01
 
 
 [[toc]]
 
 
-## Page contents
+## Note
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+- `[[toc]]` is used.
+- Second record has the latest date.
 
 
 ## Frontmatter
-
-- Second record has the latest date.
 
 ```
 ---

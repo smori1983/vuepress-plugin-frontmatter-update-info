@@ -7,19 +7,15 @@ update_info:
     description:
     - Update text for 2022/07/02.
 ---
-# Page 002
+# Basic 02
 
 
-## Page contents
+## Note
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+- First record has the latest date.
 
 
 ## Frontmatter
-
-- First record has the latest date.
 
 ```
 ---

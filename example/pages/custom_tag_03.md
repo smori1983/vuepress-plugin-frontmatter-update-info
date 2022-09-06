@@ -7,20 +7,25 @@ update_info:
   description:
     - Update information.
 ---
-# Page 007 (C)
+# Custom tag 03
 
-In any case, because the keyword of the marker is used in this page, automatic injection of update info is not applied.
+
+## Case
+
+- Custom tag used inside of other markdown notations.
 
 
 ## Container
 
-Marker is processed.
+Provided by `markdown-it-container` plugin.
+
+Tag is processed, because the container is renderer and processed later than block rule.
 
 :::tip
 [[update_info]]
 :::
 
-Example to avoid being processed:
+Example to avoid being processed (surround by back quote):
 
 :::tip
 `[[update_info]]`
@@ -29,7 +34,7 @@ Example to avoid being processed:
 
 ## Code block
 
-Marker is not processed.
+Tag is not processed.
 
 ```
 [[update_info]]
@@ -38,7 +43,7 @@ Marker is not processed.
 
 ## Table
 
-Marker is not processed.
+Tag is not processed.
 
 | key  | value           |
 |------|-----------------|
@@ -47,7 +52,7 @@ Marker is not processed.
 
 ## List
 
-Marker is not processed.
+Tag is not processed.
 
 - [[update_info]]
 - [[update_info]]

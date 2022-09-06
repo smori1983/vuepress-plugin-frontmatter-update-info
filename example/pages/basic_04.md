@@ -5,18 +5,17 @@ update_info:
     - Update information.
     - Update information.
   - date: 2022/08/08
-    description: Update text of Page 004.
+    description: Update text of the page.
 ---
-# Page 004
+# Basic 04
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+
+## Note
+
+- Define description as string.
 
 
 ## Frontmatter
-
-- Define description as string.
 
 ```
 ---
@@ -26,6 +25,6 @@ update_info:
     - Update information.
     - Update information.
   - date: 2022/08/08
-    description: Update text of Page 004.
+    description: Update text of the page.
 ---
 ```

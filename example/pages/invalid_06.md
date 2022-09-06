@@ -7,16 +7,15 @@ update_info:
     description:
     - Update text for 2022/07/11.
 ---
-# Page 106
+# Invalid 06
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+
+## Reason
+
+- First item has `date` with invalid format and ignored.
 
 
 ## Frontmatter
-
-- First item has date with invalid format and ignored.
 
 ```
 ---

@@ -9,14 +9,12 @@ update_info:
     - Update information.
     - Update information.
 ---
-## Page 005 (h2)
+## Basic 05
 
 
-## Page contents
+## Note
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+- First heading is `<h2>` (`##`).
 
 
 ## Frontmatter
