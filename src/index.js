@@ -14,6 +14,7 @@ const hook = require('./hook');
  */
 module.exports = (options, ctx) => {
   const {
+    frontmatterKey = 'update_info',
     pageEmbed = false,
     pageEmbedMarker = '[[update_info]]',
     pageEmbedComponent = 'PluginFrontmatterUpdateInfoPageEmbed',
@@ -33,7 +34,7 @@ module.exports = (options, ctx) => {
     },
 
     async ready() {
-      updates = frontmatter.collectUpdateInfo(ctx.pages);
+      updates = frontmatter.collectUpdateInfo(ctx.pages, frontmatterKey);
 
       await hook.invokeReadyCallbacks(updates);
     },

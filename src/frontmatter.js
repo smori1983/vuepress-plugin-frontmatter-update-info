@@ -6,17 +6,18 @@ const hash = require('hash-sum');
 
 /**
  * @param {Page[]} pages
+ * @param {string} frontmatterKey
  * @return {Object[]}
  */
-const collectUpdateInfo = (pages) => {
+const collectUpdateInfo = (pages, frontmatterKey) => {
   const result = [];
 
   pages.forEach((page) => {
-    if (!Array.isArray(page.frontmatter.update_info)) {
+    if (!Array.isArray(page.frontmatter[frontmatterKey])) {
       return;
     }
 
-    const updateInfo = page.frontmatter.update_info;
+    const updateInfo = page.frontmatter[frontmatterKey];
 
     const records = [];
     let dateFirst = '';
