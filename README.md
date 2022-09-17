@@ -13,7 +13,7 @@ Then the plugin will create the client dynamic module, which is JSON collecting 
 
 Basically update info is shown as list, and you can enable option to show it in each page.
 
-Default component is provided, and it is also possible to implement your own component by using the client module.
+Default components are provided, and it is also possible to implement your own component by using the client dynamic module.
 
 
 ## Configuration options
@@ -28,7 +28,7 @@ Default component is provided, and it is also possible to implement your own com
 
 ## Data structure of frontmatter
 
-- `update_info` (is default value of `frontmatterKey`) has list of records.
+- `update_info` (which is default value of `frontmatterKey`) has list of records.
 - Each record has `date` (required) and `description` (optional).
   - Format of `date` is `YYYY/MM/DD`.
   - `description` has `string` or array of `string`.
@@ -75,26 +75,6 @@ In other words, you can show update info in any place of the page by manually wr
 
 ## Default components
 
-### `FrontmatterUpdateInfoList.vue`
-
-Displays update info as list.
-
-```
-<PluginFrontmatterUpdateInfoList/>
-```
-
-Displays '`NEW`' badge 7 days by default. To change the threshold, use the component like below:
-
-```
-<PluginFrontmatterUpdateInfoList :new-threshold="14"/>
-```
-
-Or, if you do not want to display badge:
-
-```
-<PluginFrontmatterUpdateInfoList :new-threshold="0"/>
-```
-
 ### `FrontmatterUpdateInfoTable.vue`
 
 Displays update info as table.
@@ -115,9 +95,29 @@ Or, if you do not want to display badge:
 <PluginFrontmatterUpdateInfoTable :new-threshold="0"/>
 ```
 
+### `FrontmatterUpdateInfoList.vue`
+
+Displays update info as list.
+
+```
+<PluginFrontmatterUpdateInfoList/>
+```
+
+Displays '`NEW`' badge 7 days by default. To change the threshold, use the component like below:
+
+```
+<PluginFrontmatterUpdateInfoList :new-threshold="14"/>
+```
+
+Or, if you do not want to display badge:
+
+```
+<PluginFrontmatterUpdateInfoList :new-threshold="0"/>
+```
+
 ### `FrontmatterUpdateInfoDebug.vue`
 
-Outputs generated client module.
+Outputs generated client dynamic module (for debugging).
 
 ```
 <PluginFrontmatterUpdateInfoDebug/>
@@ -137,7 +137,7 @@ This plugin collects frontmatter data and generates client module named:
 
 You can register callbacks to handle frontmatter update info data.
 
-Mainly this is designed to save multi-generation data and use them for something (You need to prepare some method to save the data).
+Basically this is designed to save multi-generation data and use them for something (You need to prepare some method to save the data).
 
 ```js
 const hook = require('vuepress-plugin-frontmatter-update-info/src/hook');
@@ -161,4 +161,4 @@ This can be used to handle data inside the VuePress site, for example add client
 
 Callbacks registered by `addGeneratedCallback()` will be invoked when `generated()` hook was executed.
 
-This can be used to do something after static site was generated, for example notify with slack.
+This can be used to do something after static site was generated, for example notify to slack.
