@@ -4,9 +4,6 @@ module.exports = {
 
   themeConfig: {
     search: false,
-    nav: [
-      { text: 'npm', link: 'https://www.npmjs.com/package/vuepress-plugin-frontmatter-update-info' },
-    ],
     sidebar: [
       {
         title: 'Main',
@@ -16,15 +13,6 @@ module.exports = {
           '/debug.md',
           '/update_info_list.md',
           '/update_info_table.md',
-        ],
-      },
-      {
-        title: 'Generation data demo',
-        collapsable: false,
-        sidebarDepth: 0,
-        children: [
-          '/generation_data_demo_01.md',
-          '/generation_data_demo_02.md',
         ],
       },
       {
@@ -67,9 +55,6 @@ module.exports = {
   },
 
   plugins: [
-    [require('./plugins/generation-data-demo-01')],
-    [require('./plugins/generation-data-demo-02')],
-
     [require('../../src'), {
       pageEmbed: true,
     }],
