@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## 1.2.0
+
+### Chore
+
+- Cleanup example site contents.
+
+
 ## 1.1.0
 
 ### Feature
