@@ -2,7 +2,7 @@
 
 VuePress plugin to **manually** maintain page update info by using frontmatter.
 
-Visit [online demo](https://vp-frontmatter-update-info.herokuapp.com/).
+Visit [online demo](https://smori1983.github.io/vuepress-plugin-frontmatter-update-info-demo/).
 
 
 ## Overview
