@@ -72,12 +72,20 @@ export default {
         border-bottom 1px solid $borderColor
 
         .date {
-          width 20%
+          width 35%
           line-height 2rem
+
+          @media (min-width: $MQMobileNarrow) {
+            width 20%
+          }
         }
 
         .description {
-          width 80%
+          width 65%
+
+          @media (min-width: $MQMobileNarrow) {
+            width 80%
+          }
 
           ul {
             margin 0
