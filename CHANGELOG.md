@@ -7,6 +7,10 @@
 
 - Component style for mobile devices.
 
+### Chore
+
+- Created common `stylus` file for table type components.
+
 
 ## 1.2.0
 
