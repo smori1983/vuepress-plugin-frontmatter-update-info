@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## 1.2.1
+
+### Fix
+
+- Component style for mobile devices.
+
+
 ## 1.2.0
 
 ### Chore
