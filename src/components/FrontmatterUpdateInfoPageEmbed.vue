@@ -38,49 +38,5 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.frontmatter-update-info {
-  margin 2rem 0
-
-  .frontmatter-update-info-page {
-    margin-bottom 2rem
-
-    .link {
-      margin-bottom 0.5rem
-    }
-
-    .records {
-      .record {
-        display flex
-        margin-bottom -1px
-        border-top 1px solid $borderColor
-        border-bottom 1px solid $borderColor
-
-        .date {
-          width 35%
-          line-height 2rem
-
-          @media (min-width: $MQMobileNarrow) {
-            width 20%
-          }
-        }
-
-        .description {
-          width 65%
-
-          @media (min-width: $MQMobileNarrow) {
-            width 80%
-          }
-
-          ul {
-            margin 0
-
-            li {
-              line-height 2rem
-            }
-          }
-        }
-      }
-    }
-  }
-}
+@require '../styles/table.styl'
 </style>
