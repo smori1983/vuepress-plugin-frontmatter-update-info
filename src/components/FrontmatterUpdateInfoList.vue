@@ -31,6 +31,10 @@ export default {
       type: Number,
       default: 7,
     },
+    numOfPages: {
+      type: Number,
+      default: -1,
+    },
   },
 
   mixins: [
@@ -48,7 +52,11 @@ export default {
   },
 
   mounted() {
-    this.updates = this.getSorted(data);
+    if (this.numOfPages > 0) {
+      this.updates = this.getSorted(data).slice(0, this.numOfPages);
+    } else {
+      this.updates = this.getSorted(data);
+    }
   },
 };
 </script>
