@@ -13,10 +13,10 @@ Then the plugin will create the client dynamic module, which is JSON collecting 
 
 Basically update info is shown as list, and you can enable option to show it in each page.
 
-Default components are provided, and it is also possible to implement your own component by using the client dynamic module.
+Predefined components are provided, and it is also possible to implement your own component by using the client dynamic module.
 
 
-## Configuration options
+## Plugin configuration options
 
 | name                 | description                                         | default value                            |
 |----------------------|-----------------------------------------------------|------------------------------------------|
@@ -31,7 +31,7 @@ Default components are provided, and it is also possible to implement your own c
 - `update_info` (which is default value of `frontmatterKey`) has list of records.
 - Each record has `date` (required) and `description` (optional).
   - Format of `date` is `YYYY/MM/DD`.
-  - `description` has `string` or array of `string`.
+  - Define `description` as `string` or array of `string`.
 
 ```
 ---
@@ -68,12 +68,12 @@ If `pageEmbed` option is enabled, component for showing update info is automatic
 The component is injected after first heading when:
 
 - First line of the page is `<h1>` (`#`) or `<h2>` (`##`).
-- The text for marker (by default `'[[update_info]]'`) is not included in the page.
+- The text for marker (by default `'[[update_info]]'`) is not manually written on the page.
 
 In other words, you can show update info in any place of the page by manually writing page embed marker.
 
 
-## Default components
+## Predefined components
 
 ### `FrontmatterUpdateInfoTable.vue`
 
@@ -81,18 +81,6 @@ Displays update info as table.
 
 ```
 <PluginFrontmatterUpdateInfoTable/>
-```
-
-Displays '`NEW`' badge 7 days by default. To change the threshold, use the component like below:
-
-```
-<PluginFrontmatterUpdateInfoTable :new-threshold="14"/>
-```
-
-Or, if you do not want to display badge:
-
-```
-<PluginFrontmatterUpdateInfoTable :new-threshold="0"/>
 ```
 
 ### `FrontmatterUpdateInfoList.vue`
@@ -103,21 +91,43 @@ Displays update info as list.
 <PluginFrontmatterUpdateInfoList/>
 ```
 
-Displays '`NEW`' badge 7 days by default. To change the threshold, use the component like below:
+### Common properties
+
+#### `new-threshold`
+
+Displays '`NEW`' badge 7 days by default.
+
+To change the threshold, use the component like below:
 
 ```
+<PluginFrontmatterUpdateInfoTable :new-threshold="14"/>
 <PluginFrontmatterUpdateInfoList :new-threshold="14"/>
 ```
 
 Or, if you do not want to display badge:
 
 ```
+<PluginFrontmatterUpdateInfoTable :new-threshold="0"/>
 <PluginFrontmatterUpdateInfoList :new-threshold="0"/>
 ```
 
+#### `num-of-pages`
+
+To restrict the number of pages shown, use this property.
+
+This will be useful when you display update info as excerpt.
+
+```
+<PluginFrontmatterUpdateInfoTable :num-of-pages="3"/>
+<PluginFrontmatterUpdateInfoList :num-of-pages="3"/>
+```
+
+
+## Predefined component (for debugging)
+
 ### `FrontmatterUpdateInfoDebug.vue`
 
-Outputs generated client dynamic module (for debugging).
+Outputs the content of generated client dynamic module.
 
 ```
 <PluginFrontmatterUpdateInfoDebug/>
