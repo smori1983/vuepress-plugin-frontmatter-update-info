@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## 1.3.0
+
+### Feature
+
+- Added `num-of-pages` property to predefined components.
+  - `FrontmatterUpdateInfoList.vue`
+  - `FrontmatterUpdateInfoTable.vue`
+
+
 ## 1.2.1
 
 ### Fix
