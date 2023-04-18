@@ -11,8 +11,10 @@ module.exports = {
         sidebarDepth: 0,
         children: [
           '/debug.md',
-          '/update_info_list.md',
+          '/update_info_table_excerpt.md',
           '/update_info_table.md',
+          '/update_info_list_excerpt.md',
+          '/update_info_list.md',
         ],
       },
       {
