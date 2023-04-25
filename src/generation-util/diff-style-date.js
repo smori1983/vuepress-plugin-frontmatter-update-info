@@ -1,17 +1,9 @@
-/**
- * @typedef {import('./generation')} Generation
- */
-
 const {
   differenceBy,
 } = require('lodash');
+const DiffStyle = require('./diff-style');
 
-class DiffStyleDate {
-  /**
-   * @param {Generation} generation0
-   * @param {Generation} generation1
-   * @return {Object[]}
-   */
+class DiffStyleDate extends DiffStyle {
   get(generation0, generation1) {
     const result = [];
 

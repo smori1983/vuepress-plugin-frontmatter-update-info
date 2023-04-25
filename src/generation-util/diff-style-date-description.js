@@ -1,18 +1,10 @@
-/**
- * @typedef {import('./generation')} Generation
- */
-
 const hash = require('hash-sum');
 const {
   differenceBy,
 } = require('lodash');
+const DiffStyle = require('./diff-style');
 
-class DiffStyleDateDescription {
-  /**
-   * @param {Generation} generation0
-   * @param {Generation} generation1
-   * @return {Object[]}
-   */
+class DiffStyleDateDescription extends DiffStyle {
   get(generation0, generation1) {
     const result = [];
 
