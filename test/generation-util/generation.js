@@ -1,7 +1,7 @@
 const assert = require('assert');
 const describe = require('mocha').describe;
 const it = require('mocha').it;
-const Generation = require('../../src/generation-util/generation');
+const { Generation } = require('../../src/generation-util');
 
 describe('Generation', () => {
   describe('Num of pages: 1', () => {
