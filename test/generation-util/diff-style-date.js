@@ -1,8 +1,10 @@
 const assert = require('assert');
 const describe = require('mocha').describe;
 const it = require('mocha').it;
-const Generation = require('../../src/generation-util/generation');
-const DiffStyleDate = require('../../src/generation-util/diff-style-date');
+const {
+  Generation,
+  DiffStyleDate,
+} = require('../../src/generation-util');
 
 describe('DiffStyleDate', () => {
   it('No data in generation 0 and generation 1', () => {
