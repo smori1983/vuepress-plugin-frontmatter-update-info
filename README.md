@@ -172,3 +172,33 @@ This can be used to handle data inside the VuePress site, for example add client
 Callbacks registered by `addGeneratedCallback()` will be invoked when `generated()` hook was executed.
 
 This can be used to do something after static site was generated, for example notify to slack.
+
+
+## Generation Util
+
+You still need to implement code to store multi-generation data by yourself.
+
+But this plugin provides the measures to get difference of 2 generations.
+
+Each generation data is expressed as `Generation`.
+
+You can get difference by classes extending `DiffStyle`.
+
+| class                      | criteria                                                                    |
+|----------------------------|-----------------------------------------------------------------------------|
+| `DiffStyleDate`            | The date is new one in current generation.                                  |
+| `DiffStyleDateDescription` | The date is new one in current generation, or the description was modified. |
+
+### Usage example
+
+```js
+const {
+  Generation,
+  DiffStyleDate,
+} = require('vuepress-plugin-frontmatter-update-info/src/generation-util');
+
+const generationData = ...; // Fetch data from somewhere generation data being stored.
+const generation0 = new Generation(generationData.generation_0);
+const generation1 = new Generation(generationData.generation_1);
+const targetPages = new DiffStyleDate().get(generation0, generation1);
+```
