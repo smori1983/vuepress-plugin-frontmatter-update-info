@@ -11,19 +11,19 @@ First, write description as frontmatter about how the page was updated.
 
 Then the plugin will create the client dynamic module, which is JSON collecting frontmatter data.
 
-Basically update info is shown as list, and you can enable option to show it in each page.
+Basically update info is shown using component. And you can enable option to show it in each page.
 
 Predefined components are provided, and it is also possible to implement your own component by using the client dynamic module.
 
 
 ## Plugin configuration options
 
-| name                 | description                                         | default value                            |
-|----------------------|-----------------------------------------------------|------------------------------------------|
-| `frontmatterKey`     | Key to define update info data.                     | `'update_info'`                          |
-| `pageEmbed`          | Switch to enable embed of update info to each page. | `false`                                  |
-| `pageEmbedMarker`    | Marker for manual page embed.                       | `'[[update_info]]'`                      |
-| `pageEmbedComponent` | Component name used for page embed.                 | `'PluginFrontmatterUpdateInfoPageEmbed'` |
+| name                 | description                                                                                    | default value                            |
+|----------------------|------------------------------------------------------------------------------------------------|------------------------------------------|
+| `frontmatterKey`     | Key to define update info data. Change this if the same key is already used for other purpose. | `'update_info'`                          |
+| `pageEmbed`          | Switch to enable embed of update info to each page.                                            | `false`                                  |
+| `pageEmbedMarker`    | Marker for manual page embed.                                                                  | `'[[update_info]]'`                      |
+| `pageEmbedComponent` | Component name used for page embed.                                                            | `'PluginFrontmatterUpdateInfoPageEmbed'` |
 
 
 ## Data structure of frontmatter
@@ -36,25 +36,25 @@ Predefined components are provided, and it is also possible to implement your ow
 ```
 ---
 update_info:
-  - date: YYYY/MM/DD
+- date: YYYY/MM/DD
 ---
 ```
 
 ```
 ---
 update_info:
-  - date: YYYY/MM/DD
-    description: <string>
+- date: YYYY/MM/DD
+  description: <string>
 ---
 ```
 
 ```
 ---
 update_info:
-  - date: YYYY/MM/DD
-    description:
-    - <string>
-    - <string>
+- date: YYYY/MM/DD
+  description:
+  - <string>
+  - <string>
 ---
 ```
 
