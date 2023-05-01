@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## 1.4.0
+
+### Feature
+
+- Added `generation-util`.
+
+
 ## 1.3.0
 
 ### Feature
