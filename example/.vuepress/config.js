@@ -27,6 +27,7 @@ module.exports = {
           '/pages/basic_03.md',
           '/pages/basic_04.md',
           '/pages/basic_05.md',
+          '/pages/basic_06.md',
         ],
       },
       {
@@ -51,6 +52,8 @@ module.exports = {
           '/pages/invalid_05.md',
           '/pages/invalid_06.md',
           '/pages/invalid_07.md',
+          '/pages/invalid_08.md',
+          '/pages/invalid_09.md',
         ],
       },
     ],
