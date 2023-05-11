@@ -1,11 +1,11 @@
 ---
 update_info:
-  - date: 20220710
-    description:
-    - Update text for 2022/07/10.
-  - date: 2022/07/11
-    description:
-    - Update text for 2022/07/11.
+- date: 20220710
+  description:
+  - Update text for 2022/07/10.
+- date: 2022/07/11
+  description:
+  - Update text for 2022/07/11.
 ---
 # Invalid 06
 
@@ -20,11 +20,11 @@ update_info:
 ```
 ---
 update_info:
-  - date: 20220710
-    description:
-    - Update text for 2022/07/10.
-  - date: 2022/07/11
-    description:
-    - Update text for 2022/07/11.
+- date: 20220710
+  description:
+  - Update text for 2022/07/10.
+- date: 2022/07/11
+  description:
+  - Update text for 2022/07/11.
 ---
 ```

@@ -1,8 +1,8 @@
 ---
 update_info:
-  - description:
-    - Update text of the page.
-    - Update text of the page.
+- description:
+  - Update text of the page.
+  - Update text of the page.
 ---
 # Invalid 05
 
@@ -17,8 +17,8 @@ update_info:
 ```
 ---
 update_info:
-  - description:
-    - Update text of the page.
-    - Update text of the page.
+- description:
+  - Update text of the page.
+  - Update text of the page.
 ---
 ```
