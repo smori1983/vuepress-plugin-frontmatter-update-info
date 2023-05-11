@@ -32,7 +32,13 @@ export default {
   },
 
   mounted() {
-    this.pageData = this.findByKey(data, this.$page.key);
+    const updateInfoOption = this.$frontmatter.update_info_option || {
+      page_embed: true,
+    };
+
+    if (updateInfoOption.page_embed !== false) {
+      this.pageData = this.findByKey(data, this.$page.key);
+    }
   },
 }
 </script>
