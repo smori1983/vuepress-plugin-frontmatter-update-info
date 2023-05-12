@@ -25,6 +25,19 @@ Predefined components are provided, and it is also possible to implement your ow
 | `pageEmbedMarker`    | Marker for manual page embed.                                                                  | `'[[update_info]]'`                      |
 | `pageEmbedComponent` | Component name used for page embed.                                                            | `'PluginFrontmatterUpdateInfoPageEmbed'` |
 
+In `.vuepress/config.js`,
+
+```js
+module.exports = {
+  plugins: [
+    ['frontmatter-update-info', {
+      pageEmbed: true,
+      // Configure more if necessary.
+    }],
+  ],
+};
+```
+
 
 ## Data structure of frontmatter
 
