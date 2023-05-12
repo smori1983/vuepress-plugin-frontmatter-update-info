@@ -7,12 +7,17 @@ const hash = require('hash-sum');
 /**
  * @param {Page[]} pages
  * @param {string} frontmatterKey
+ * @param {string} frontmatterOptionKey
  * @return {Object[]}
  * @throws {Error}
  */
-const collectUpdateInfo = (pages, frontmatterKey) => {
+const collectUpdateInfo = (pages, frontmatterKey, frontmatterOptionKey) => {
   if (!(typeof frontmatterKey === 'string' && frontmatterKey.trim().length > 0)) {
     throw new Error('Invalid frontmatter key');
+  }
+
+  if (!(typeof frontmatterOptionKey === 'string' && frontmatterOptionKey.trim().length > 0)) {
+    throw new Error('Invalid frontmatter option key');
   }
 
   const result = [];
@@ -48,6 +53,8 @@ const collectUpdateInfo = (pages, frontmatterKey) => {
       }
     });
 
+    const option = page.frontmatter[frontmatterOptionKey] || {};
+
     if (records.length > 0) {
       result.push({
         key: page.key,
@@ -57,6 +64,7 @@ const collectUpdateInfo = (pages, frontmatterKey) => {
         dateLast: dateLast,
         records: records,
         recordsHash: hash(records),
+        option: option,
       });
     }
   });

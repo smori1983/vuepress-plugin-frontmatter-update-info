@@ -32,12 +32,10 @@ export default {
   },
 
   mounted() {
-    const updateInfoOption = this.$frontmatter.update_info_option || {
-      page_embed: true,
-    };
+    const pageData = this.findByKey(data, this.$page.key);
 
-    if (updateInfoOption.page_embed !== false) {
-      this.pageData = this.findByKey(data, this.$page.key);
+    if (pageData && pageData.option.page_embed !== false) {
+      this.pageData = pageData;
     }
   },
 }
