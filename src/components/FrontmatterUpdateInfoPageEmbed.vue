@@ -32,7 +32,11 @@ export default {
   },
 
   mounted() {
-    this.pageData = this.findByKey(data, this.$page.key);
+    const pageData = this.findByKey(data, this.$page.key);
+
+    if (pageData && pageData.option.page_embed !== false) {
+      this.pageData = pageData;
+    }
   },
 }
 </script>

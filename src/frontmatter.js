@@ -1,5 +1,6 @@
 /**
  * @typedef {import('vuepress-types').Page} Page
+ * @typedef {import('vuepress-types').PageFrontmatter} PageFrontmatter
  */
 
 const hash = require('hash-sum');
@@ -7,12 +8,17 @@ const hash = require('hash-sum');
 /**
  * @param {Page[]} pages
  * @param {string} frontmatterKey
+ * @param {string} frontmatterOptionKey
  * @return {Object[]}
  * @throws {Error}
  */
-const collectUpdateInfo = (pages, frontmatterKey) => {
+const collectUpdateInfo = (pages, frontmatterKey, frontmatterOptionKey) => {
   if (!(typeof frontmatterKey === 'string' && frontmatterKey.trim().length > 0)) {
     throw new Error('Invalid frontmatter key');
+  }
+
+  if (!(typeof frontmatterOptionKey === 'string' && frontmatterOptionKey.trim().length > 0)) {
+    throw new Error('Invalid frontmatter option key');
   }
 
   const result = [];
@@ -57,6 +63,7 @@ const collectUpdateInfo = (pages, frontmatterKey) => {
         dateLast: dateLast,
         records: records,
         recordsHash: hash(records),
+        option: prepareOption(page.frontmatter, frontmatterOptionKey),
       });
     }
   });
@@ -94,6 +101,25 @@ const prepareDescription = (record) => {
   }
 
   return [];
+};
+
+/**
+ * @param {PageFrontmatter} frontmatter
+ * @param {string} frontmatterOptionKey
+ * @return {Object}
+ */
+const prepareOption = (frontmatter, frontmatterOptionKey) => {
+  const {
+    page_embed,
+  } = frontmatter[frontmatterOptionKey] || {};
+
+  const result = {};
+
+  if (typeof page_embed === 'boolean') {
+    result.page_embed = page_embed;
+  }
+
+  return result;
 };
 
 module.exports.collectUpdateInfo = collectUpdateInfo;
