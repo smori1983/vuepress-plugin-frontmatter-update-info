@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## 1.5.0
+
+### Feature
+
+- Added frontmatter option per page.
+  - `page_embed` (boolean) to disable page embed.
+- Added option (`frontmatterOptionKey`) to change key of frontmatter option.
+
+
 ## 1.4.0
 
 ### Feature
