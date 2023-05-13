@@ -1,5 +1,6 @@
 /**
  * @typedef {import('vuepress-types').Page} Page
+ * @typedef {import('vuepress-types').PageFrontmatter} PageFrontmatter
  */
 
 const hash = require('hash-sum');
@@ -53,8 +54,6 @@ const collectUpdateInfo = (pages, frontmatterKey, frontmatterOptionKey) => {
       }
     });
 
-    const option = page.frontmatter[frontmatterOptionKey] || {};
-
     if (records.length > 0) {
       result.push({
         key: page.key,
@@ -64,7 +63,7 @@ const collectUpdateInfo = (pages, frontmatterKey, frontmatterOptionKey) => {
         dateLast: dateLast,
         records: records,
         recordsHash: hash(records),
-        option: option,
+        option: prepareOption(page.frontmatter, frontmatterOptionKey),
       });
     }
   });
@@ -102,6 +101,25 @@ const prepareDescription = (record) => {
   }
 
   return [];
+};
+
+/**
+ * @param {PageFrontmatter} frontmatter
+ * @param {string} frontmatterOptionKey
+ * @return {Object}
+ */
+const prepareOption = (frontmatter, frontmatterOptionKey) => {
+  const {
+    page_embed,
+  } = frontmatter[frontmatterOptionKey] || {};
+
+  const result = {};
+
+  if (typeof page_embed === 'boolean') {
+    result.page_embed = page_embed;
+  }
+
+  return result;
 };
 
 module.exports.collectUpdateInfo = collectUpdateInfo;
