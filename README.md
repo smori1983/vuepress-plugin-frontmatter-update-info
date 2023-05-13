@@ -18,12 +18,13 @@ Predefined components are provided, and it is also possible to implement your ow
 
 ## Plugin configuration options
 
-| name                 | description                                                                                    | default value                            |
-|----------------------|------------------------------------------------------------------------------------------------|------------------------------------------|
-| `frontmatterKey`     | Key to define update info data. Change this if the same key is already used for other purpose. | `'update_info'`                          |
-| `pageEmbed`          | Switch to enable embed of update info to each page.                                            | `false`                                  |
-| `pageEmbedMarker`    | Marker for manual page embed.                                                                  | `'[[update_info]]'`                      |
-| `pageEmbedComponent` | Component name used for page embed.                                                            | `'PluginFrontmatterUpdateInfoPageEmbed'` |
+| name                   | description                                                                                      | default value                            |
+|------------------------|--------------------------------------------------------------------------------------------------|------------------------------------------|
+| `frontmatterKey`       | Key to define update info data. Change this if the same key is already used for other purpose.   | `'update_info'`                          |
+| `frontmatterOptionKey` | Key to define update info option. Change this if the same key is already used for other purpose. | `'update_info_option'`                   |
+| `pageEmbed`            | Switch to enable embed of update info to each page.                                              | `false`                                  |
+| `pageEmbedMarker`      | Marker for manual page embed.                                                                    | `'[[update_info]]'`                      |
+| `pageEmbedComponent`   | Component name used for page embed.                                                              | `'PluginFrontmatterUpdateInfoPageEmbed'` |
 
 In `.vuepress/config.js`,
 
@@ -39,7 +40,7 @@ module.exports = {
 ```
 
 
-## Data structure of frontmatter
+## Usage of frontmatter
 
 - `update_info` (which is default value of `frontmatterKey`) has list of records.
 - Each record has `date` (required) and `description` (optional).
@@ -68,6 +69,22 @@ update_info:
   description:
   - <string>
   - <string>
+---
+```
+
+
+## Usage of frontmatter option
+
+You can define `update_info_option` (which is default value of `frontmatterOptionKey`).
+
+| key          | description                                                 |
+|--------------|-------------------------------------------------------------|
+| `page_embed` | Set `false` if you want to disable page embed for the page. |
+
+```
+---
+update_info_option:
+  page_embed: false
 ---
 ```
 
