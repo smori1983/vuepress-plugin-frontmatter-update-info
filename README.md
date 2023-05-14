@@ -42,10 +42,14 @@ module.exports = {
 
 ## Usage of frontmatter
 
-- `update_info` (which is default value of `frontmatterKey`) has list of records.
-- Each record has `date` (required) and `description` (optional).
-  - Format of `date` is `YYYY/MM/DD`.
-  - Define `description` as `string` or array of `string`.
+`update_info` (which is default value of `frontmatterKey`) has list of records.
+
+| key           | required | description                   |
+|---------------|----------|-------------------------------|
+| `date`        | Y        | format: `YYYY/MM/DD`          |
+| `description` | n        | `string` or array of `string` |
+
+### Examples
 
 ```
 ---
@@ -80,6 +84,8 @@ You can define `update_info_option` (which is default value of `frontmatterOptio
 | key          | description                                                 |
 |--------------|-------------------------------------------------------------|
 | `page_embed` | Set `false` if you want to disable page embed for the page. |
+
+### Example
 
 ```
 ---
