@@ -9,78 +9,40 @@ const frontmatterOptionKeyDefault = 'update_info_option';
 describe('frontmatter', () => {
   describe('arguments', () => {
     describe('frontmatterKey', () => {
-      it('invalid: null', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], null, frontmatterOptionKeyDefault);
-        }, /Invalid frontmatter key/);
-      });
+      const testData = [
+        ['invalid: null', null],
+        ['invalid: false', false],
+        ['invalid: true', true],
+        ['invalid: numeric', 123],
+        ['invalid: empty string', ''],
+        ['invalid: space only', ' '],
+      ];
 
-      it('invalid: false', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], false, frontmatterOptionKeyDefault);
-        }, /Invalid frontmatter key/);
-      });
-
-      it('invalid: true', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], true, frontmatterOptionKeyDefault);
-        }, /Invalid frontmatter key/);
-      });
-
-      it('invalid: numeric', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], 123, frontmatterOptionKeyDefault);
-        }, /Invalid frontmatter key/);
-      });
-
-      it('invalid: empty string', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], '', frontmatterOptionKeyDefault);
-        }, /Invalid frontmatter key/);
-      });
-
-      it('invalid: space only', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], ' ', frontmatterOptionKeyDefault);
-        }, /Invalid frontmatter key/);
+      testData.forEach(([title, input]) => {
+        it(title, () => {
+          assert.throws(() => {
+            frontmatter_arguments.collectUpdateInfo([], input, frontmatterOptionKeyDefault);
+          }, /Invalid frontmatter key/);
+        });
       });
     });
 
     describe('frontmatterOptionKey', () => {
-      it('invalid: null', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], frontmatterKeyDefault, null);
-        }, /Invalid frontmatter option key/);
-      });
+      const testData = [
+        ['invalid: null', null],
+        ['invalid: false', false],
+        ['invalid: true', true],
+        ['invalid: numeric', 123],
+        ['invalid: empty string', ''],
+        ['invalid: space only', ' '],
+      ];
 
-      it('invalid: false', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], frontmatterKeyDefault, false);
-        }, /Invalid frontmatter option key/);
-      });
-
-      it('invalid: true', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], frontmatterKeyDefault, true);
-        }, /Invalid frontmatter option key/);
-      });
-
-      it('invalid: numeric', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], frontmatterKeyDefault, 123);
-        }, /Invalid frontmatter option key/);
-      });
-
-      it('invalid: empty string', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], frontmatterKeyDefault, '');
-        }, /Invalid frontmatter option key/);
-      });
-
-      it('invalid: space only', () => {
-        assert.throws(() => {
-          frontmatter_arguments.collectUpdateInfo([], frontmatterKeyDefault, ' ');
-        }, /Invalid frontmatter option key/);
+      testData.forEach(([title, input]) => {
+        it(title, () => {
+          assert.throws(() => {
+            frontmatter_arguments.collectUpdateInfo([], frontmatterKeyDefault, input);
+          }, /Invalid frontmatter option key/);
+        });
       });
     });
   });
