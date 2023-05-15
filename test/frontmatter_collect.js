@@ -167,6 +167,135 @@ describe('frontmatter', () => {
       });
     });
 
+    describe('Normal frontmatter data', () => {
+      it('num of pages: 1, num of records: 1', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2023/05/01',
+                  description: 'page added.',
+                },
+              ],
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 1);
+        assert.deepStrictEqual(result[0].key, 'v-10000000');
+        assert.deepStrictEqual(result[0].path, '/page_01.html');
+        assert.deepStrictEqual(result[0].title, 'page 01');
+        assert.deepStrictEqual(result[0].dateFirst, '2023/05/01');
+        assert.deepStrictEqual(result[0].dateLast, '2023/05/01');
+        assert.deepStrictEqual(result[0].records.length, 1);
+        assert.deepStrictEqual(result[0].records[0].date, '2023/05/01');
+        assert.deepStrictEqual(result[0].records[0].description, ['page added.']);
+      });
+
+      it('num of pages: 1, num of records: 2', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2023/05/02',
+                  description: 'page edited.',
+                },
+                {
+                  date: '2023/05/01',
+                  description: 'page added.',
+                },
+              ],
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 1);
+        assert.deepStrictEqual(result[0].dateFirst, '2023/05/01');
+        assert.deepStrictEqual(result[0].dateLast, '2023/05/02');
+        assert.deepStrictEqual(result[0].records.length, 2);
+        assert.deepStrictEqual(result[0].records[0].date, '2023/05/02');
+        assert.deepStrictEqual(result[0].records[0].description, ['page edited.']);
+        assert.deepStrictEqual(result[0].records[1].date, '2023/05/01');
+        assert.deepStrictEqual(result[0].records[1].description, ['page added.']);
+      });
+
+      it('date sorted asc', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2023/05/01',
+                  description: 'message.',
+                },
+                {
+                  date: '2023/05/02',
+                  description: 'message.',
+                },
+                {
+                  date: '2023/05/03',
+                  description: 'message.',
+                },
+              ],
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 1);
+        assert.deepStrictEqual(result[0].dateFirst, '2023/05/01');
+        assert.deepStrictEqual(result[0].dateLast, '2023/05/03');
+      });
+
+      it('date sorted desc', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2023/05/10',
+                  description: 'message.',
+                },
+                {
+                  date: '2023/05/09',
+                  description: 'message.',
+                },
+                {
+                  date: '2023/05/08',
+                  description: 'message.',
+                },
+              ],
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 1);
+        assert.deepStrictEqual(result[0].dateFirst, '2023/05/08');
+        assert.deepStrictEqual(result[0].dateLast, '2023/05/10');
+      });
+    });
+
     describe('Invalid frontmatter option data', () => {
       it('Unknown key', () => {
         const pages = [
