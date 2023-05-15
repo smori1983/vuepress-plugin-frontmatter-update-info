@@ -59,8 +59,8 @@ describe('frontmatter', () => {
       });
     });
 
-    describe('Invalid frontmatter structure', () => {
-      it('Value not defined.', () => {
+    describe('Invalid frontmatter data', () => {
+      it('Value not defined', () => {
         const pages = [
           {
             key: 'v-10000000',
@@ -164,6 +164,60 @@ describe('frontmatter', () => {
         assert.deepStrictEqual(result.length, 1);
         assert.deepStrictEqual(result[0].records.length, 1);
         assert.deepStrictEqual(result[0].records[0].description.length, 0);
+      });
+    });
+
+    describe('Invalid frontmatter option data', () => {
+      it('Unknown key', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2023/05/01',
+                  description: 'page added.',
+                },
+              ],
+              update_info_option: {
+                foo: 'bar',
+              },
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 1);
+        assert.deepStrictEqual(result[0].option, {});
+      });
+
+      it('Define page_embed as non-boolean', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2023/05/01',
+                  description: 'page added.',
+                },
+              ],
+              update_info_option: {
+                page_embed: 0,
+              },
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 1);
+        assert.deepStrictEqual(result[0].option, {});
       });
     });
   });
