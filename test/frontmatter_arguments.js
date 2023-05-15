@@ -21,7 +21,10 @@ describe('frontmatter', () => {
       testData.forEach(([title, input]) => {
         it(title, () => {
           assert.throws(() => {
-            frontmatter.collectUpdateInfo([], input, frontmatterOptionKeyDefault);
+            frontmatter.collectUpdateInfo([], {
+              frontmatterKey: input,
+              frontmatterOptionKey: frontmatterOptionKeyDefault,
+            });
           }, /Invalid frontmatter key/);
         });
       });
@@ -40,7 +43,10 @@ describe('frontmatter', () => {
       testData.forEach(([title, input]) => {
         it(title, () => {
           assert.throws(() => {
-            frontmatter.collectUpdateInfo([], frontmatterKeyDefault, input);
+            frontmatter.collectUpdateInfo([], {
+              frontmatterKey: frontmatterKeyDefault,
+              frontmatterOptionKey: input,
+            });
           }, /Invalid frontmatter option key/);
         });
       });
