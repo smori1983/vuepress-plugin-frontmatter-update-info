@@ -220,5 +220,63 @@ describe('frontmatter', () => {
         assert.deepStrictEqual(result[0].option, {});
       });
     });
+
+    describe('Normal frontmatter option data', () => {
+      it('Define page_embed as false', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2023/05/01',
+                  description: 'page added.',
+                },
+              ],
+              update_info_option: {
+                page_embed: false,
+              },
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 1);
+        assert.deepStrictEqual(result[0].option, {
+          page_embed: false,
+        });
+      });
+
+      it('Define page_embed as true', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2023/05/01',
+                  description: 'page added.',
+                },
+              ],
+              update_info_option: {
+                page_embed: true,
+              },
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 1);
+        assert.deepStrictEqual(result[0].option, {
+          page_embed: true,
+        });
+      });
+    });
   });
 });
