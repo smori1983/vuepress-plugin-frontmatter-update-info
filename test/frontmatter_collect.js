@@ -1,0 +1,170 @@
+const assert = require('assert');
+const describe = require('mocha').describe;
+const it = require('mocha').it;
+const frontmatter = require('../src/frontmatter');
+
+const frontmatterKeyDefault = 'update_info';
+const frontmatterOptionKeyDefault = 'update_info_option';
+
+const collect = (pages) => {
+  return frontmatter.collectUpdateInfo(pages, frontmatterKeyDefault, frontmatterOptionKeyDefault);
+};
+
+describe('frontmatter', () => {
+  describe('collectUpdateInfo', () => {
+    describe('number of items', () => {
+      it('pages: 0', () => {
+        const pages = [];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 0);
+      });
+
+      it('pages: 1, frontmatter not defined', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {},
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 0);
+      });
+
+      it('pages: 1, frontmatter defined', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2023/05/01',
+                  description: 'page added.',
+                },
+              ],
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 1);
+      });
+    });
+
+    describe('Invalid frontmatter structure', () => {
+      it('Value not defined.', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: null,
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 0);
+      });
+
+      it('Defined as string', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: 'foo',
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 0);
+      });
+
+      it('Date is not defined', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  description: 'page added.',
+                },
+              ],
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 0);
+      });
+
+      it('Date format is not YYYY/MM/DD', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '20230501',
+                  description: 'page added.',
+                },
+              ],
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 0);
+      });
+
+      it('Description contains non-string', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2023/05/01',
+                  description: [
+                    'page added.',
+                    {
+                      key: 'value',
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 1);
+        assert.deepStrictEqual(result[0].records.length, 1);
+        assert.deepStrictEqual(result[0].records[0].description.length, 0);
+      });
+    });
+  });
+});
