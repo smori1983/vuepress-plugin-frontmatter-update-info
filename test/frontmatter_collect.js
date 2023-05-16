@@ -234,6 +234,34 @@ describe('frontmatter', () => {
         assert.deepStrictEqual(result[0].records[1].description, ['page added.']);
       });
 
+      it('define description as array', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2023/05/01',
+                  description: [
+                    'message1.',
+                    'message2.',
+                  ],
+                },
+              ],
+            },
+          },
+        ];
+
+        const result = collect(pages);
+
+        assert.deepStrictEqual(result.length, 1);
+        assert.deepStrictEqual(result[0].records[0].description.length, 2);
+        assert.deepStrictEqual(result[0].records[0].description[0], 'message1.');
+        assert.deepStrictEqual(result[0].records[0].description[1], 'message2.');
+      });
+
       it('date sorted asc', () => {
         const pages = [
           {
