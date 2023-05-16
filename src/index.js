@@ -35,7 +35,10 @@ module.exports = (options, ctx) => {
     },
 
     async ready() {
-      updates = frontmatter.collectUpdateInfo(ctx.pages, frontmatterKey, frontmatterOptionKey);
+      updates = frontmatter.collectUpdateInfo(ctx.pages, {
+        frontmatterKey,
+        frontmatterOptionKey,
+      });
 
       await hook.invokeReadyCallbacks(updates);
     },

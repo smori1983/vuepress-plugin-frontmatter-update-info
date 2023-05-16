@@ -7,7 +7,10 @@ const frontmatterKeyDefault = 'update_info';
 const frontmatterOptionKeyDefault = 'update_info_option';
 
 const collect = (pages) => {
-  return frontmatter.collectUpdateInfo(pages, frontmatterKeyDefault, frontmatterOptionKeyDefault);
+  return frontmatter.collectUpdateInfo(pages, {
+    frontmatterKey: frontmatterKeyDefault,
+    frontmatterOptionKey: frontmatterOptionKeyDefault,
+  });
 };
 
 describe('frontmatter', () => {

@@ -7,12 +7,16 @@ const hash = require('hash-sum');
 
 /**
  * @param {Page[]} pages
- * @param {string} frontmatterKey
- * @param {string} frontmatterOptionKey
+ * @param {Object} option
  * @return {Object[]}
  * @throws {Error}
  */
-const collectUpdateInfo = (pages, frontmatterKey, frontmatterOptionKey) => {
+const collectUpdateInfo = (pages, option) => {
+  const {
+    frontmatterKey,
+    frontmatterOptionKey,
+  } = option;
+
   if (!(typeof frontmatterKey === 'string' && frontmatterKey.trim().length > 0)) {
     throw new Error('Invalid frontmatter key');
   }
