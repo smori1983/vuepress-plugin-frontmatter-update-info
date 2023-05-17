@@ -34,13 +34,11 @@ const collectUpdateInfo = (pages, option) => {
 
     const updateInfo = page.frontmatter[frontmatterKey];
 
-    const records = [];
-
-    updateInfo.filter(hasValidDate).forEach((record) => {
-      records.push({
+    const records = updateInfo.filter(hasValidDate).map(record => {
+      return {
         date: record.date,
         description: prepareDescription(record),
-      });
+      };
     });
 
     if (records.length > 0) {
