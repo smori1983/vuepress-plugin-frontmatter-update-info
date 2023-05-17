@@ -28,11 +28,11 @@ const collectUpdateInfo = (pages, option) => {
   const result = [];
 
   pages.forEach((page) => {
-    if (!Array.isArray(page.frontmatter[frontmatterKey])) {
+    const updateInfo = page.frontmatter[frontmatterKey];
+
+    if (!Array.isArray(updateInfo)) {
       return;
     }
-
-    const updateInfo = page.frontmatter[frontmatterKey];
 
     const records = updateInfo.filter(hasValidDate).map(record => {
       return {
