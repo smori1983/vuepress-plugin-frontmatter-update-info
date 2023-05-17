@@ -35,36 +35,23 @@ const collectUpdateInfo = (pages, option) => {
     const updateInfo = page.frontmatter[frontmatterKey];
 
     const records = [];
-    let dateFirst = '';
-    let dateLast = '';
 
     updateInfo.filter(hasValidDate).forEach((record) => {
-      if (records.length === 0) {
-        dateFirst = record.date;
-        dateLast = record.date;
-      }
-
       records.push({
         date: record.date,
         description: prepareDescription(record),
       });
-
-      if (dateFirst > record.date) {
-        dateFirst = record.date;
-      }
-
-      if (dateLast < record.date) {
-        dateLast = record.date;
-      }
     });
 
     if (records.length > 0) {
+      const recordDates = records.map(r => r.date).sort();
+
       result.push({
         key: page.key,
         path: page.path,
         title: page.title,
-        dateFirst: dateFirst,
-        dateLast: dateLast,
+        dateFirst: recordDates[0],
+        dateLast: recordDates.slice(-1)[0],
         records: records,
         recordsHash: hash(records),
         option: prepareOption(page.frontmatter, frontmatterOptionKey),
