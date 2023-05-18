@@ -94,13 +94,13 @@ const prepareDescription = (record) => {
 };
 
 /**
- * @param {(Object|undefined)} option
+ * @param {(Object|undefined)} updateInfoOption
  * @return {Object}
  */
-const prepareOption = (option) => {
+const prepareOption = (updateInfoOption) => {
   const {
     page_embed,
-  } = option || {};
+  } = updateInfoOption || {};
 
   const result = {};
 
