@@ -28,51 +28,45 @@ const collectUpdateInfo = (pages, option) => {
   const result = [];
 
   pages.forEach((page) => {
-    if (!Array.isArray(page.frontmatter[frontmatterKey])) {
-      return;
-    }
-
     const updateInfo = page.frontmatter[frontmatterKey];
+    const updateInfoOption = page.frontmatter[frontmatterOptionKey];
 
-    const records = [];
-    let dateFirst = '';
-    let dateLast = '';
-
-    updateInfo.filter(hasValidDate).forEach((record) => {
-      if (records.length === 0) {
-        dateFirst = record.date;
-        dateLast = record.date;
-      }
-
-      records.push({
-        date: record.date,
-        description: prepareDescription(record),
-      });
-
-      if (dateFirst > record.date) {
-        dateFirst = record.date;
-      }
-
-      if (dateLast < record.date) {
-        dateLast = record.date;
-      }
-    });
+    const records = prepareRecords(updateInfo);
 
     if (records.length > 0) {
+      const recordDates = records.map(r => r.date).sort();
+
       result.push({
         key: page.key,
         path: page.path,
         title: page.title,
-        dateFirst: dateFirst,
-        dateLast: dateLast,
+        dateFirst: recordDates[0],
+        dateLast: recordDates.slice(-1)[0],
         records: records,
         recordsHash: hash(records),
-        option: prepareOption(page.frontmatter, frontmatterOptionKey),
+        option: prepareOption(updateInfoOption),
       });
     }
   });
 
   return result;
+};
+
+/**
+ * @param {(Object[]|undefined)} updateInfo
+ * @return {Object[]}
+ */
+const prepareRecords = (updateInfo) => {
+  if (Array.isArray(updateInfo)) {
+    return updateInfo.filter(hasValidDate).map((record) => {
+      return {
+        date: record.date,
+        description: prepareDescription(record),
+      };
+    });
+  }
+
+  return [];
 };
 
 /**
@@ -108,14 +102,13 @@ const prepareDescription = (record) => {
 };
 
 /**
- * @param {PageFrontmatter} frontmatter
- * @param {string} frontmatterOptionKey
+ * @param {(Object|undefined)} updateInfoOption
  * @return {Object}
  */
-const prepareOption = (frontmatter, frontmatterOptionKey) => {
+const prepareOption = (updateInfoOption) => {
   const {
     page_embed,
-  } = frontmatter[frontmatterOptionKey] || {};
+  } = updateInfoOption || {};
 
   const result = {};
 
