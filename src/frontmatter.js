@@ -31,16 +31,7 @@ const collectUpdateInfo = (pages, option) => {
     const updateInfo = page.frontmatter[frontmatterKey];
     const updateInfoOption = page.frontmatter[frontmatterOptionKey];
 
-    if (!Array.isArray(updateInfo)) {
-      return;
-    }
-
-    const records = updateInfo.filter(hasValidDate).map(record => {
-      return {
-        date: record.date,
-        description: prepareDescription(record),
-      };
-    });
+    const records = prepareRecords(updateInfo);
 
     if (records.length > 0) {
       const recordDates = records.map(r => r.date).sort();
@@ -59,6 +50,23 @@ const collectUpdateInfo = (pages, option) => {
   });
 
   return result;
+};
+
+/**
+ * @param {(Object[]|undefined)} updateInfo
+ * @return {Object[]}
+ */
+const prepareRecords = (updateInfo) => {
+  if (Array.isArray(updateInfo)) {
+    return updateInfo.filter(hasValidDate).map((record) => {
+      return {
+        date: record.date,
+        description: prepareDescription(record),
+      };
+    });
+  }
+
+  return [];
 };
 
 /**
