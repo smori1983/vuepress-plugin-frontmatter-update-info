@@ -29,6 +29,7 @@ const collectUpdateInfo = (pages, option) => {
 
   pages.forEach((page) => {
     const updateInfo = page.frontmatter[frontmatterKey];
+    const updateInfoOption = page.frontmatter[frontmatterOptionKey];
 
     if (!Array.isArray(updateInfo)) {
       return;
@@ -52,7 +53,7 @@ const collectUpdateInfo = (pages, option) => {
         dateLast: recordDates.slice(-1)[0],
         records: records,
         recordsHash: hash(records),
-        option: prepareOption(page.frontmatter, frontmatterOptionKey),
+        option: prepareOption(updateInfoOption),
       });
     }
   });
@@ -93,14 +94,13 @@ const prepareDescription = (record) => {
 };
 
 /**
- * @param {PageFrontmatter} frontmatter
- * @param {string} frontmatterOptionKey
+ * @param {(Object|undefined)} option
  * @return {Object}
  */
-const prepareOption = (frontmatter, frontmatterOptionKey) => {
+const prepareOption = (option) => {
   const {
     page_embed,
-  } = frontmatter[frontmatterOptionKey] || {};
+  } = option || {};
 
   const result = {};
 
