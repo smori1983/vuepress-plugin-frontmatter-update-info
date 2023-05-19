@@ -4,6 +4,7 @@
  */
 
 const hash = require('hash-sum');
+const moment = require('moment');
 
 /**
  * @param {Page[]} pages
@@ -15,6 +16,7 @@ const collectUpdateInfo = (pages, option) => {
   const {
     frontmatterKey,
     frontmatterOptionKey,
+    recordDatePeriod,
   } = option;
 
   if (!(typeof frontmatterKey === 'string' && frontmatterKey.trim().length > 0)) {
@@ -27,11 +29,15 @@ const collectUpdateInfo = (pages, option) => {
 
   const result = [];
 
+  const recordDateMin = (recordDatePeriod >= 0)
+    ? moment().subtract(recordDatePeriod, 'd').format('YYYY/MM/DD')
+    : '0000/00/00';
+
   pages.forEach((page) => {
     const updateInfo = page.frontmatter[frontmatterKey];
     const updateInfoOption = page.frontmatter[frontmatterOptionKey];
 
-    const records = prepareRecords(updateInfo);
+    const records = prepareRecords(updateInfo, recordDateMin);
 
     if (records.length > 0) {
       const recordDates = records.map(r => r.date).sort();
@@ -54,16 +60,22 @@ const collectUpdateInfo = (pages, option) => {
 
 /**
  * @param {(Object[]|undefined)} updateInfo
+ * @param {string} recordDateMin
  * @return {Object[]}
  */
-const prepareRecords = (updateInfo) => {
+const prepareRecords = (updateInfo, recordDateMin) => {
   if (Array.isArray(updateInfo)) {
-    return updateInfo.filter(hasValidDate).map((record) => {
-      return {
-        date: record.date,
-        description: prepareDescription(record),
-      };
-    });
+    return updateInfo
+      .filter(hasValidDate)
+      .filter((record) => {
+        return recordDateMin <= record.date;
+      })
+      .map((record) => {
+        return {
+          date: record.date,
+          description: prepareDescription(record),
+        };
+      });
   }
 
   return [];
