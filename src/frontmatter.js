@@ -29,15 +29,13 @@ const collectUpdateInfo = (pages, option) => {
 
   const result = [];
 
-  const recordDateMin = (recordDatePeriod >= 0)
-    ? moment().subtract(recordDatePeriod, 'd').format('YYYY/MM/DD')
-    : '0000/00/00';
+  const recordOption = prepareRecordOption(recordDatePeriod);
 
   pages.forEach((page) => {
     const updateInfo = page.frontmatter[frontmatterKey];
     const updateInfoOption = page.frontmatter[frontmatterOptionKey];
 
-    const records = prepareRecords(updateInfo, recordDateMin);
+    const records = prepareRecords(updateInfo, recordOption);
 
     if (records.length > 0) {
       const recordDates = records.map(r => r.date).sort();
@@ -59,11 +57,29 @@ const collectUpdateInfo = (pages, option) => {
 };
 
 /**
+ * @param {number} recordDatePeriod
+ * @return {Object}
+ */
+const prepareRecordOption = (recordDatePeriod) => {
+  const recordDateMin = (recordDatePeriod >= 0)
+    ? moment().subtract(recordDatePeriod, 'd').format('YYYY/MM/DD')
+    : '0000/00/00';
+
+  return {
+    recordDateMin,
+  };
+};
+
+/**
  * @param {(Object[]|undefined)} updateInfo
- * @param {string} recordDateMin
+ * @param {Object} recordOption
  * @return {Object[]}
  */
-const prepareRecords = (updateInfo, recordDateMin) => {
+const prepareRecords = (updateInfo, recordOption) => {
+  const {
+    recordDateMin,
+  } = recordOption;
+
   if (Array.isArray(updateInfo)) {
     return updateInfo
       .filter(hasValidDate)
