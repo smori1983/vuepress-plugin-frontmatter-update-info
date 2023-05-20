@@ -1,17 +1,12 @@
 const assert = require('assert');
 const describe = require('mocha').describe;
 const it = require('mocha').it;
-const frontmatter = require('../src/frontmatter');
 const moment = require('moment');
-
-const frontmatterKeyDefault = 'update_info';
-const frontmatterOptionKeyDefault = 'update_info_option';
+const helper = require('./_helper/frontmatter');
 
 const collect = (pages, recordPublishPeriod) => {
-  return frontmatter.collectUpdateInfo(pages, {
-    frontmatterKey: frontmatterKeyDefault,
-    frontmatterOptionKey: frontmatterOptionKeyDefault,
-    recordPublishPeriod: recordPublishPeriod,
+  return helper.collect(pages, {
+    recordPublishPeriod,
   });
 };
 
