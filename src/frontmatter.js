@@ -57,12 +57,12 @@ const collectUpdateInfo = (pages, option) => {
 };
 
 /**
- * @param {number} recordDatePeriod
+ * @param {number} recordPublishPeriod
  * @return {Object}
  */
-const prepareRecordOption = (recordDatePeriod) => {
-  const recordDateMin = (recordDatePeriod >= 0)
-    ? moment().subtract(recordDatePeriod, 'd').format('YYYY/MM/DD')
+const prepareRecordOption = (recordPublishPeriod) => {
+  const recordDateMin = (recordPublishPeriod >= 0)
+    ? moment().subtract(recordPublishPeriod, 'd').format('YYYY/MM/DD')
     : '0000/00/00';
 
   return {
