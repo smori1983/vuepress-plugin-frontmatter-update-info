@@ -76,25 +76,25 @@ const prepareRecordOption = (recordDatePeriod) => {
  * @return {Object[]}
  */
 const prepareRecords = (updateInfo, recordOption) => {
+  if (!Array.isArray(updateInfo)) {
+    return [];
+  }
+
   const {
     recordDateMin,
   } = recordOption;
 
-  if (Array.isArray(updateInfo)) {
-    return updateInfo
-      .filter(hasValidDate)
-      .filter((record) => {
-        return recordDateMin <= record.date;
-      })
-      .map((record) => {
-        return {
-          date: record.date,
-          description: prepareDescription(record),
-        };
-      });
-  }
-
-  return [];
+  return updateInfo
+    .filter(hasValidDate)
+    .filter((record) => {
+      return recordDateMin <= record.date;
+    })
+    .map((record) => {
+      return {
+        date: record.date,
+        description: prepareDescription(record),
+      };
+    });
 };
 
 /**
