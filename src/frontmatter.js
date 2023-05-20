@@ -27,7 +27,7 @@ const collectUpdateInfo = (pages, option) => {
     throw new Error('Invalid frontmatter option key');
   }
 
-  if (!(typeof recordPublishPeriod === 'number')) {
+  if (!Number.isInteger(recordPublishPeriod)) {
     throw new Error('Invalid record publish period');
   }
 
