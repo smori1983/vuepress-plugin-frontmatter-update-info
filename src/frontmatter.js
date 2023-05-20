@@ -16,7 +16,7 @@ const collectUpdateInfo = (pages, option) => {
   const {
     frontmatterKey,
     frontmatterOptionKey,
-    recordDatePeriod,
+    recordPublishPeriod,
   } = option;
 
   if (!(typeof frontmatterKey === 'string' && frontmatterKey.trim().length > 0)) {
@@ -29,7 +29,7 @@ const collectUpdateInfo = (pages, option) => {
 
   const result = [];
 
-  const recordOption = prepareRecordOption(recordDatePeriod);
+  const recordOption = prepareRecordOption(recordPublishPeriod);
 
   pages.forEach((page) => {
     const updateInfo = page.frontmatter[frontmatterKey];
