@@ -4,7 +4,7 @@ const it = require('mocha').it;
 
 const handleArgument = (arg) => {
   const {
-    value,
+    value = 'x',
   } = arg || {};
 
   return value;
@@ -16,43 +16,43 @@ describe('javascript', () => {
       it('undefined', () => {
         const value = handleArgument();
 
-        assert.deepStrictEqual(value, undefined);
+        assert.deepStrictEqual(value, 'x');
       });
 
       it('null', () => {
         const value = handleArgument(null);
 
-        assert.deepStrictEqual(value, undefined);
+        assert.deepStrictEqual(value, 'x');
       });
 
       it('boolean', () => {
         const value = handleArgument(true);
 
-        assert.deepStrictEqual(value, undefined);
+        assert.deepStrictEqual(value, 'x');
       });
 
       it('numeric', () => {
         const value = handleArgument(123);
 
-        assert.deepStrictEqual(value, undefined);
+        assert.deepStrictEqual(value, 'x');
       });
 
       it('string', () => {
         const value = handleArgument('value');
 
-        assert.deepStrictEqual(value, undefined);
+        assert.deepStrictEqual(value, 'x');
       });
 
       it('empty array', () => {
         const value = handleArgument([]);
 
-        assert.deepStrictEqual(value, undefined);
+        assert.deepStrictEqual(value, 'x');
       });
 
       it('array contains elements', () => {
         const value = handleArgument(['value', 'a', 'b']);
 
-        assert.deepStrictEqual(value, undefined);
+        assert.deepStrictEqual(value, 'x');
       });
 
       it('object without necessary property', () => {
@@ -61,7 +61,7 @@ describe('javascript', () => {
           value2: 'b',
         });
 
-        assert.deepStrictEqual(value, undefined);
+        assert.deepStrictEqual(value, 'x');
       });
 
       it('object with necessary property', () => {
@@ -70,6 +70,22 @@ describe('javascript', () => {
         });
 
         assert.deepStrictEqual(value, 'a');
+      });
+
+      it('object with necessary property is null', () => {
+        const value = handleArgument({
+          value: null,
+        });
+
+        assert.deepStrictEqual(value, null);
+      });
+
+      it('object with necessary property is undefined', () => {
+        const value = handleArgument({
+          value: undefined
+        });
+
+        assert.deepStrictEqual(value, 'x');
       });
     });
   });
