@@ -7,11 +7,11 @@ const moment = require('moment');
 const frontmatterKeyDefault = 'update_info';
 const frontmatterOptionKeyDefault = 'update_info_option';
 
-const collect = (pages, recordDatePeriod) => {
+const collect = (pages, recordPublishPeriod) => {
   return frontmatter.collectUpdateInfo(pages, {
     frontmatterKey: frontmatterKeyDefault,
     frontmatterOptionKey: frontmatterOptionKeyDefault,
-    recordDatePeriod: recordDatePeriod,
+    recordPublishPeriod: recordPublishPeriod,
   });
 };
 
