@@ -16,10 +16,10 @@ module.exports = (options, ctx) => {
   const {
     frontmatterKey = 'update_info',
     frontmatterOptionKey = 'update_info_option',
-    recordPublishPeriod = -1,
     pageEmbed = false,
     pageEmbedMarker = '[[update_info]]',
     pageEmbedComponent = 'PluginFrontmatterUpdateInfoPageEmbed',
+    recordPublishPeriod = -1,
   } = options;
 
   let updates = [];
