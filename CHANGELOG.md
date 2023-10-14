@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## Next
+
+### Chore
+
+- frontmatter.collectUpdateInfo() accepts option as an object ([#40](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/40))
+- frontmatter.js refactoring ([#41](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/41))
+
+
 ## 1.5.0
 
 ### Features
