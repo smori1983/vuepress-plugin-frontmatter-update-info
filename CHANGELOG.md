@@ -3,38 +3,34 @@
 
 ## 1.5.0
 
-### Feature
+### Features
 
-- Added frontmatter option per page.
-  - `page_embed` (boolean) to disable page embed.
-- Added option (`frontmatterOptionKey`) to change key of frontmatter option.
+- Added frontmatter option per page ([#38](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/38))
+- Added option (`frontmatterOptionKey`) to change key of frontmatter option ([#38](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/38))
 
 
 ## 1.4.0
 
-### Feature
+### Features
 
-- Added `generation-util`.
-
+- Added `generation-util` ([#36](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/36))([#37](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/37))
 
 ## 1.3.0
 
-### Feature
+### Features
 
-- Added `num-of-pages` property to predefined components.
-  - `FrontmatterUpdateInfoList.vue`
-  - `FrontmatterUpdateInfoTable.vue`
+- Added `num-of-pages` property to predefined components ([#35](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/35))
 
 
 ## 1.2.1
 
-### Fix
+### Bug Fixes
 
-- Component style for mobile devices.
+- Component style for mobile devices ([#33](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/33))
 
 ### Chore
 
-- Created common `stylus` file for table type components.
+- Created common `stylus` file for table type components ([#34](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/34))
 
 
 ## 1.2.0
@@ -46,16 +42,16 @@
 
 ## 1.1.0
 
-### Feature
+### Features
 
-- Added option (`frontmatterKey`) to change key of frontmatter.
-- Added option (`pageEmbed`) to display update info also in pages.
-- Added option (`pageEmbedMarker`) to change marker of manual page embed.
-- Added option (`pageEmbedComponent`) to change component for page embed.
+- Added option (`frontmatterKey`) to change key of frontmatter ([#32](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/32))
+- Added option (`pageEmbed`) to display update info also in pages ([#25](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/25))
+- Added option (`pageEmbedMarker`) to change marker of manual page embed ([#29](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/29))
+- Added option (`pageEmbedComponent`) to change component for page embed ([#31](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/31))
 
 ### Others
 
-- Use VuePress core style (`$borderColor`)
+- Use VuePress core style (`$borderColor`) ([#26](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/26))
 
 
 ## 1.0.0
