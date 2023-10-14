@@ -35,6 +35,28 @@ describe('frontmatter', () => {
         assert.deepStrictEqual(result.length, 1);
       });
 
+      it('period: -100, all negative values treated as unlimited', () => {
+        const pages = [
+          {
+            key: 'v-10000000',
+            path: '/page_01.html',
+            title: 'page 01',
+            frontmatter: {
+              update_info: [
+                {
+                  date: '2000/01/01', // Too old value.
+                  description: 'page added.',
+                },
+              ],
+            },
+          },
+        ];
+
+        const result = collect(pages, -100);
+
+        assert.deepStrictEqual(result.length, 1);
+      });
+
       it('period: 0, date: enough old value', () => {
         const pages = [
           {
