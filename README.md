@@ -20,14 +20,6 @@ Predefined components are provided, and it is also possible to implement your ow
 
 ## Plugin configuration options
 
-| name                   | description                                                                                      | default value                            |
-|------------------------|--------------------------------------------------------------------------------------------------|------------------------------------------|
-| `frontmatterKey`       | Key to define update info data. Change this if the same key is already used for other purpose.   | `'update_info'`                          |
-| `frontmatterOptionKey` | Key to define update info option. Change this if the same key is already used for other purpose. | `'update_info_option'`                   |
-| `pageEmbed`            | Switch to enable embed of update info to each page.                                              | `false`                                  |
-| `pageEmbedMarker`      | Marker for manual page embed.                                                                    | `'[[update_info]]'`                      |
-| `pageEmbedComponent`   | Component name used for page embed.                                                              | `'PluginFrontmatterUpdateInfoPageEmbed'` |
-
 In `.vuepress/config.js`,
 
 ```js
@@ -40,6 +32,52 @@ module.exports = {
   ],
 };
 ```
+
+### `frontmatterKey`
+
+- Type: `string`
+- Default: `'update_info'`
+
+Key to define update info data. Change this if the same key is already used for other purpose.
+
+### `frontmatterOptionKey`
+
+- Type: `string`
+- Default: `'update_info_option'`
+
+Key to define update info option. Change this if the same key is already used for other purpose.
+
+### `pageEmbed`
+
+- Type: `boolean`
+- Default: `false`
+
+Switch to enable embed of update info to each page.
+
+### `pageEmbedMarker`
+
+- Type: `string`
+- Default: `'[[update_info]]'`
+
+Marker for manual page embed in markdown file.
+
+### `pageEmbedComponent`
+
+- Type: `string`
+- Default: `'PluginFrontmatterUpdateInfoPageEmbed'`
+
+Component name used for page embed.
+
+### `recordPublishPeriod`
+
+- Type: `number`
+- Default: `-1`
+
+Define the collecting range of update info records per page. This option is referred only when building site.
+
+- negative value: unlimited
+- `0`: extract records of build date only
+- positive value: extract records of build date and past N days
 
 
 ## Usage of frontmatter
