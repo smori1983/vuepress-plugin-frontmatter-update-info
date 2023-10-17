@@ -98,7 +98,7 @@ const prepareRecordOption = (recordPublishPeriod) => {
 };
 
 /**
- * @param {(updateInfoRecord[]|undefined)} updateInfo
+ * @param {updateInfoRecord[]} updateInfo
  * @param {updateInfoRecordOption} recordOption
  * @return {updateInfoRecord[]}
  */
@@ -112,7 +112,12 @@ const prepareRecords = (updateInfo, recordOption) => {
   } = recordOption;
 
   return updateInfo
-    .filter(hasValidDate)
+    .filter((record) => {
+      return typeof record.date === 'string';
+    })
+    .filter((record) => {
+      return /^\d{4}\/\d{2}\/\d{2}$/.test(record.date);
+    })
     .filter((record) => {
       return recordDateMin <= record.date;
     })
@@ -122,18 +127,6 @@ const prepareRecords = (updateInfo, recordOption) => {
         description: prepareDescription(record),
       };
     });
-};
-
-/**
- * @param {updateInfoRecord} record
- * @return {boolean}
- */
-const hasValidDate = (record) => {
-  if (typeof record.date !== 'string') {
-    return false;
-  }
-
-  return /^\d{4}\/\d{2}\/\d{2}$/.test(record.date);
 };
 
 /**
