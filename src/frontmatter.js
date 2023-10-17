@@ -7,8 +7,31 @@ const hash = require('hash-sum');
 const moment = require('moment');
 
 /**
+ * @typedef {Object} collectUpdateInfoOption
+ * @property {string} frontmatterKey
+ * @property {string} frontmatterOptionKey
+ * @property {number} recordPublishPeriod
+ */
+
+/**
+ * @typedef {Object} updateInfoRecordOption
+ * @property {string} recordDateMin YYYY/MM/DD
+ */
+
+/**
+ * @typedef {Object} updateInfoRecord
+ * @property {string} date YYYY/MM/DD
+ * @property {(string|string[])} description
+ */
+
+/**
+ * @typedef {Object} updateInfoOption
+ * @property {boolean} [page_embed]
+ */
+
+/**
  * @param {Page[]} pages
- * @param {Object} option
+ * @param {collectUpdateInfoOption} option
  * @return {Object[]}
  * @throws {Error}
  */
@@ -62,7 +85,7 @@ const collectUpdateInfo = (pages, option) => {
 
 /**
  * @param {number} recordPublishPeriod
- * @return {Object}
+ * @return {updateInfoRecordOption}
  */
 const prepareRecordOption = (recordPublishPeriod) => {
   const recordDateMin = (recordPublishPeriod >= 0)
@@ -75,9 +98,9 @@ const prepareRecordOption = (recordPublishPeriod) => {
 };
 
 /**
- * @param {(Object[]|undefined)} updateInfo
- * @param {Object} recordOption
- * @return {Object[]}
+ * @param {(updateInfoRecord[]|undefined)} updateInfo
+ * @param {updateInfoRecordOption} recordOption
+ * @return {updateInfoRecord[]}
  */
 const prepareRecords = (updateInfo, recordOption) => {
   if (!Array.isArray(updateInfo)) {
@@ -102,7 +125,7 @@ const prepareRecords = (updateInfo, recordOption) => {
 };
 
 /**
- * @param {Object} record
+ * @param {updateInfoRecord} record
  * @return {boolean}
  */
 const hasValidDate = (record) => {
@@ -114,7 +137,7 @@ const hasValidDate = (record) => {
 };
 
 /**
- * @param {Object} record
+ * @param {updateInfoRecord} record
  * @return {string[]}
  */
 const prepareDescription = (record) => {
@@ -134,8 +157,8 @@ const prepareDescription = (record) => {
 };
 
 /**
- * @param {(Object|undefined)} updateInfoOption
- * @return {Object}
+ * @param {(updateInfoOption|undefined)} updateInfoOption
+ * @return {updateInfoOption}
  */
 const prepareOption = (updateInfoOption) => {
   const {
