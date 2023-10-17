@@ -1,7 +1,11 @@
 # CHANGELOG
 
 
-## Next
+## 1.6.0
+
+### Features
+
+- Option for record publish period filtering ([#42](https://github.com/smori1983/vuepress-plugin-frontmatter-update-info/pull/42))
 
 ### Chore
 
