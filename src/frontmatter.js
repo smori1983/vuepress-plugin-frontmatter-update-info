@@ -4,10 +4,34 @@
  */
 
 const hash = require('hash-sum');
+const moment = require('moment');
+
+/**
+ * @typedef {Object} collectUpdateInfoOption
+ * @property {string} frontmatterKey
+ * @property {string} frontmatterOptionKey
+ * @property {number} recordPublishPeriod
+ */
+
+/**
+ * @typedef {Object} updateInfoRecordOption
+ * @property {string} recordDateMin YYYY/MM/DD
+ */
+
+/**
+ * @typedef {Object} updateInfoRecord
+ * @property {string} date YYYY/MM/DD
+ * @property {(string|string[])} description
+ */
+
+/**
+ * @typedef {Object} updateInfoOption
+ * @property {boolean} [page_embed]
+ */
 
 /**
  * @param {Page[]} pages
- * @param {Object} option
+ * @param {collectUpdateInfoOption} option
  * @return {Object[]}
  * @throws {Error}
  */
@@ -15,6 +39,7 @@ const collectUpdateInfo = (pages, option) => {
   const {
     frontmatterKey,
     frontmatterOptionKey,
+    recordPublishPeriod,
   } = option;
 
   if (!(typeof frontmatterKey === 'string' && frontmatterKey.trim().length > 0)) {
@@ -25,13 +50,19 @@ const collectUpdateInfo = (pages, option) => {
     throw new Error('Invalid frontmatter option key');
   }
 
+  if (!Number.isInteger(recordPublishPeriod)) {
+    throw new Error('Invalid record publish period');
+  }
+
   const result = [];
+
+  const recordOption = prepareRecordOption(recordPublishPeriod);
 
   pages.forEach((page) => {
     const updateInfo = page.frontmatter[frontmatterKey];
     const updateInfoOption = page.frontmatter[frontmatterOptionKey];
 
-    const records = prepareRecords(updateInfo);
+    const records = prepareRecords(updateInfo, recordOption);
 
     if (records.length > 0) {
       const recordDates = records.map(r => r.date).sort();
@@ -53,36 +84,53 @@ const collectUpdateInfo = (pages, option) => {
 };
 
 /**
- * @param {(Object[]|undefined)} updateInfo
- * @return {Object[]}
+ * @param {number} recordPublishPeriod
+ * @return {updateInfoRecordOption}
  */
-const prepareRecords = (updateInfo) => {
-  if (Array.isArray(updateInfo)) {
-    return updateInfo.filter(hasValidDate).map((record) => {
+const prepareRecordOption = (recordPublishPeriod) => {
+  const recordDateMin = (recordPublishPeriod >= 0)
+    ? moment().subtract(recordPublishPeriod, 'd').format('YYYY/MM/DD')
+    : '0000/00/00';
+
+  return {
+    recordDateMin,
+  };
+};
+
+/**
+ * @param {updateInfoRecord[]} updateInfo
+ * @param {updateInfoRecordOption} recordOption
+ * @return {updateInfoRecord[]}
+ */
+const prepareRecords = (updateInfo, recordOption) => {
+  if (!Array.isArray(updateInfo)) {
+    return [];
+  }
+
+  const {
+    recordDateMin,
+  } = recordOption;
+
+  return updateInfo
+    .filter((record) => {
+      return typeof record.date === 'string';
+    })
+    .filter((record) => {
+      return /^\d{4}\/\d{2}\/\d{2}$/.test(record.date);
+    })
+    .filter((record) => {
+      return recordDateMin <= record.date;
+    })
+    .map((record) => {
       return {
         date: record.date,
         description: prepareDescription(record),
       };
     });
-  }
-
-  return [];
 };
 
 /**
- * @param {Object} record
- * @return {boolean}
- */
-const hasValidDate = (record) => {
-  if (typeof record.date !== 'string') {
-    return false;
-  }
-
-  return /^\d{4}\/\d{2}\/\d{2}$/.test(record.date);
-};
-
-/**
- * @param {Object} record
+ * @param {updateInfoRecord} record
  * @return {string[]}
  */
 const prepareDescription = (record) => {
@@ -102,8 +150,8 @@ const prepareDescription = (record) => {
 };
 
 /**
- * @param {(Object|undefined)} updateInfoOption
- * @return {Object}
+ * @param {(updateInfoOption|undefined)} updateInfoOption
+ * @return {updateInfoOption}
  */
 const prepareOption = (updateInfoOption) => {
   const {

@@ -1,10 +1,7 @@
 const assert = require('assert');
 const describe = require('mocha').describe;
 const it = require('mocha').it;
-const frontmatter = require('../src/frontmatter');
-
-const frontmatterKeyDefault = 'update_info';
-const frontmatterOptionKeyDefault = 'update_info_option';
+const helper = require('./_helper/frontmatter');
 
 describe('frontmatter', () => {
   describe('arguments', () => {
@@ -21,9 +18,8 @@ describe('frontmatter', () => {
       testData.forEach(([title, input]) => {
         it(title, () => {
           assert.throws(() => {
-            frontmatter.collectUpdateInfo([], {
+            helper.collect([], {
               frontmatterKey: input,
-              frontmatterOptionKey: frontmatterOptionKeyDefault,
             });
           }, /Invalid frontmatter key/);
         });
@@ -43,8 +39,7 @@ describe('frontmatter', () => {
       testData.forEach(([title, input]) => {
         it(title, () => {
           assert.throws(() => {
-            frontmatter.collectUpdateInfo([], {
-              frontmatterKey: frontmatterKeyDefault,
+            helper.collect([], {
               frontmatterOptionKey: input,
             });
           }, /Invalid frontmatter option key/);

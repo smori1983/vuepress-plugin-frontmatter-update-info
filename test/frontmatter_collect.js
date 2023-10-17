@@ -1,16 +1,10 @@
 const assert = require('assert');
 const describe = require('mocha').describe;
 const it = require('mocha').it;
-const frontmatter = require('../src/frontmatter');
-
-const frontmatterKeyDefault = 'update_info';
-const frontmatterOptionKeyDefault = 'update_info_option';
+const helper = require('./_helper/frontmatter');
 
 const collect = (pages) => {
-  return frontmatter.collectUpdateInfo(pages, {
-    frontmatterKey: frontmatterKeyDefault,
-    frontmatterOptionKey: frontmatterOptionKeyDefault,
-  });
+  return helper.collect(pages);
 };
 
 describe('frontmatter', () => {

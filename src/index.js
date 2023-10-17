@@ -17,8 +17,9 @@ module.exports = (options, ctx) => {
     frontmatterKey = 'update_info',
     frontmatterOptionKey = 'update_info_option',
     pageEmbed = false,
-    pageEmbedMarker = '[[update_info]]',
     pageEmbedComponent = 'PluginFrontmatterUpdateInfoPageEmbed',
+    pageEmbedMarker = '[[update_info]]',
+    recordPublishPeriod = -1,
   } = options;
 
   let updates = [];
@@ -38,6 +39,7 @@ module.exports = (options, ctx) => {
       updates = frontmatter.collectUpdateInfo(ctx.pages, {
         frontmatterKey,
         frontmatterOptionKey,
+        recordPublishPeriod,
       });
 
       await hook.invokeReadyCallbacks(updates);
