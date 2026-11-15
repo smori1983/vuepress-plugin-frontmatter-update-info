@@ -13,7 +13,7 @@
     "deep-copy": "^1.4.2",
     "hash-sum": "^2.0.0",
     "lodash": "^4.17.21",
-    "moment": "^2.29.4"
+    "moment": "^2.31.0"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
